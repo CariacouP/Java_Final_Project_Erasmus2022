@@ -7,10 +7,16 @@ public class Adresse {
 	String zipCode;
 	String Country;
 	
-	Adresse(){
-		
-	}
+	
 
+	public Adresse(int number, String street, String town, String zipCode, String country) {
+		super();
+		this.number = number;
+		this.street = street;
+		this.town = town;
+		this.zipCode = zipCode;
+		Country = country;
+	}
 	public int getNumber() {
 		return number;
 	}
