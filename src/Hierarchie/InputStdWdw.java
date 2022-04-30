@@ -129,7 +129,7 @@ public class InputStdWdw extends JFrame {
 					
 					if (Type_Studie=="Full time student") {
 						
-						InputFullTimeStd fullTimeStd = new InputFullTimeStd(newStudent);
+						FullTimeStd fullTimeStd = InputFullTimeStd(newStudent);
 						
 					}
 					
@@ -145,6 +145,78 @@ public class InputStdWdw extends JFrame {
 			
 			
 			
+		}
+		
+		public FullTimeStd InputFullTimeStd(Student student){
+			FullTimeStd fullTimeStd;
+			
+			int levelOfStudie; // betwen 1 and 5
+			String Major;
+			String Minor1;
+			String Minor2;
+			String ReferalProf;
+			int avgGrade;
+			
+			fullTimeStd= new FullTimeStd(Student.name,Student.Surname,Student.Field_Of_Studie,Student.Adresse,Student.id_Student);
+			this.removeAll();
+			
+			this.setSize(700,700);
+			this.setLayout(new GridLayout(0,2));
+			
+			JPanel PLevelOfStudie = new JPanel();
+			JPanel PMajor = new JPanel();
+			JPanel PMinor1 = new JPanel();
+			JPanel PMinor2 = new JPanel();
+			JPanel PReferalProf = new JPanel();
+			JPanel PavgGrade = new JPanel();
+			
+			JTextField tf_Major;
+			JTextField tf_Minor1;
+			JTextField tf_Minor2;
+			JTextField tf_ReferalProf;
+			JTextField tf_AvgGrade;
+			
+			JComboBox<String> cb_level;  //pour récupérer en string int recupVal = Integer.parseInt((String)myComboBox.getSelectedItem())
+			JButton bn_add = new JButton("Save");
+			
+			cb_level= new JComboBox<String>();
+			cb_level.addItem("1");
+			cb_level.addItem("2");
+			cb_level.addItem("3");
+			cb_level.addItem("4");
+			cb_level.addItem("5");
+			cb_level.addItem("6");
+			cb_level.addItem("7");
+			cb_level.addItem("8");
+			
+			PLevelOfStudie.add(new JLabel("year of Studie : "));
+			PLevelOfStudie.add(cb_level);
+			
+			PMajor.add(new JLabel("Major : "));
+			PMajor.add(tf_Major=new JTextField(10));
+			
+			PMinor1.add(new JLabel("Minor 1 : "));
+			PMinor1.add(tf_Minor1=new JTextField(10));
+			
+			PMinor2.add(new JLabel("Minor 2 : "));
+			PMinor2.add(tf_Minor2=new JTextField(10));
+			
+			PReferalProf.add(new JLabel("Refferal Prof : "));
+			PReferalProf.add(tf_ReferalProf=new JTextField(10));
+			
+			PavgGrade.add(new JLabel("Average Grade"));
+			PavgGrade.add(tf_AvgGrade=new JTextField(10));
+			
+			add(PLevelOfStudie);
+			add(PMajor);
+			add(PMinor1);
+			add(PMinor2);
+			add(PReferalProf);
+			add(PavgGrade);
+			
+		
+			this.setVisible(true);
+			return fullTimeStd;
 		}
 		
 }
