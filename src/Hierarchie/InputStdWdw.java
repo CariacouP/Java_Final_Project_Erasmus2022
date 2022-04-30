@@ -17,7 +17,35 @@ public class InputStdWdw extends JFrame {
 		Adresse student_Adress;
 		
 		Student newStudent = new Student();
+		
+		JPanel PButton=new JPanel();
+		// Panel pour l'etuduant de base
+		JPanel PTitle=new JPanel();
+		JPanel PName=new JPanel();
+		JPanel PSurname=new JPanel();
+		JPanel PField_Of_Studie=new JPanel();
+		JPanel PAdress=new JPanel();
+		JPanel PNumber=new JPanel();
+		JPanel PStreet=new JPanel();
+		JPanel PTown=new JPanel();
+		JPanel PZipCode=new JPanel();
+		JPanel PCountry=new JPanel();
+		JPanel PTypeStd=new JPanel();
+		
+		JPanel PanelStudent=new JPanel();
+		
+		
+		
 	
+		//pannel full time std
+		JPanel PLevelOfStudie = new JPanel();
+		JPanel PMajor = new JPanel();
+		JPanel PMinor1 = new JPanel();
+		JPanel PMinor2 = new JPanel();
+		JPanel PReferalProf = new JPanel();
+		JPanel PavgGrade = new JPanel();
+		JPanel PanelFullTimeStudent = new JPanel();
+		JPanel PButtonSubmit=new JPanel();
 
 		public InputStdWdw(){
 			//this.removeAll();
@@ -25,17 +53,7 @@ public class InputStdWdw extends JFrame {
 			this.setLayout(new GridLayout(0,2));
 			
 			
-			JPanel PTitle=new JPanel();
-			JPanel PName=new JPanel();
-			JPanel PSurname=new JPanel();
-			JPanel PField_Of_Studie=new JPanel();
-			JPanel PAdress=new JPanel();
-			JPanel PNumber=new JPanel();
-			JPanel PStreet=new JPanel();
-			JPanel PTown=new JPanel();
-			JPanel PZipCode=new JPanel();
-			JPanel PCountry=new JPanel();
-			JPanel PTypeStd=new JPanel();
+			
 			
 			JTextField tf_name;
 			JTextField tf_Surname;
@@ -46,7 +64,7 @@ public class InputStdWdw extends JFrame {
 			JTextField tf_ZipCode;
 			JTextField tf_Country;
 			JComboBox<String> cb_Type_Studie;
-			JButton bn_add = new JButton("Next");
+			JButton bn_addStd ;
 			
 			//PTitle.setLayout(new GridLayout(1,1));
 			PTitle.add(new JLabel("Student :"));
@@ -98,23 +116,31 @@ public class InputStdWdw extends JFrame {
 			cb_Type_Studie.addItem("Erasmus Student");
 			PTypeStd.add(cb_Type_Studie);
 			
+			bn_addStd = new JButton("Next");
+			PButton.add(bn_addStd);
 		
 			
+			PanelStudent.add(PTitle);
+			PanelStudent.add(PName);
+			PanelStudent.add(PSurname);
+			PanelStudent.add(PField_Of_Studie);
+			PanelStudent.add(PAdress);
+			PanelStudent.add(PStreet);
+			PanelStudent.add(PNumber);
+			PanelStudent.add(PTown);
+			PanelStudent.add(PZipCode);
+			PanelStudent.add(PCountry);
+			PanelStudent.add(PTypeStd);
+			PanelStudent.add(PButton);
 			
-			this.add(PTitle);
-			this.add(PName);
-			this.add(PSurname);
-			this.add(PField_Of_Studie);
-			this.add(PAdress);
-			this.add(PStreet);
-			this.add(PNumber);
-			this.add(PTown);
-			this.add(PZipCode);
-			this.add(PCountry);
-			this.add(PTypeStd);
-			this.add(bn_add);
 			
-			bn_add.addActionListener(new ActionListener(){
+			this.add(PanelStudent);
+			
+			
+			
+			setVisible(true);
+			System.out.println("3");
+			bn_addStd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					name = tf_name.getText();
 					surname=tf_Surname.getText();
@@ -128,9 +154,10 @@ public class InputStdWdw extends JFrame {
 					newStudent.setAdresse(student_Adress);
 					
 					if (Type_Studie=="Full time student") {
+						//this.removeAll();
 						
 						FullTimeStd fullTimeStd = InputFullTimeStd(newStudent);
-						
+						System.out.println(fullTimeStd.toString());
 					}
 					
 					
@@ -140,7 +167,9 @@ public class InputStdWdw extends JFrame {
 			
 			
 			
-			setVisible(true);
+			
+			
+			
 			
 			
 			
@@ -150,25 +179,18 @@ public class InputStdWdw extends JFrame {
 		public FullTimeStd InputFullTimeStd(Student student){
 			FullTimeStd fullTimeStd;
 			
-			int levelOfStudie; // betwen 1 and 5
-			String Major;
-			String Minor1;
-			String Minor2;
-			String ReferalProf;
-			int avgGrade;
+			
+			
 			
 			fullTimeStd= new FullTimeStd(Student.name,Student.Surname,Student.Field_Of_Studie,Student.Adresse,Student.id_Student);
-			this.removeAll();
+			this.remove(PanelStudent);
+			
+	
 			
 			this.setSize(700,700);
 			this.setLayout(new GridLayout(0,2));
 			
-			JPanel PLevelOfStudie = new JPanel();
-			JPanel PMajor = new JPanel();
-			JPanel PMinor1 = new JPanel();
-			JPanel PMinor2 = new JPanel();
-			JPanel PReferalProf = new JPanel();
-			JPanel PavgGrade = new JPanel();
+			
 			
 			JTextField tf_Major;
 			JTextField tf_Minor1;
@@ -207,15 +229,51 @@ public class InputStdWdw extends JFrame {
 			PavgGrade.add(new JLabel("Average Grade"));
 			PavgGrade.add(tf_AvgGrade=new JTextField(10));
 			
-			add(PLevelOfStudie);
-			add(PMajor);
-			add(PMinor1);
-			add(PMinor2);
-			add(PReferalProf);
-			add(PavgGrade);
+			JButton bn_addSubmit = new JButton("Submit");
+			PButtonSubmit.add(bn_addSubmit);
+			
+			
+			
+			PanelFullTimeStudent.add(PLevelOfStudie);
+			PanelFullTimeStudent.add(PMajor);
+			PanelFullTimeStudent.add(PMinor1);
+			PanelFullTimeStudent.add(PMinor2);
+			PanelFullTimeStudent.add(PReferalProf);
+			PanelFullTimeStudent.add(PavgGrade);
+			PanelFullTimeStudent.add(PButtonSubmit);
+			this.add(PanelFullTimeStudent);
+			
+			bn_addSubmit.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					int levelOfStudie; // betwen 1 and 5
+					String Major;
+					String Minor1;
+					String Minor2;
+					String ReferalProf;
+					Long avgGrade;
+					
+					levelOfStudie = Integer.parseInt((String)cb_level.getSelectedItem());
+					Major=tf_Major.getText();
+					Minor1 = tf_Minor1.getText();
+					Minor2= tf_Minor2.getText();
+					ReferalProf= tf_ReferalProf.getText();
+					avgGrade=Long.parseLong(tf_AvgGrade.getText());
+					System.out.println(name+" "+surname+" "+Field_of_Studie+" "+Type_Studie+" "+student_Adress.toString());
+					
+					fullTimeStd.setAvgGrade(avgGrade);
+					fullTimeStd.setLevelOfStudie(levelOfStudie);
+					fullTimeStd.setMajor(Major);
+					fullTimeStd.setMinor1(Minor1);
+					fullTimeStd.setMinor2(Minor2);
+					fullTimeStd.setReferalProf(ReferalProf);
+					
+					
+				}
+			});			
 			
 		
 			this.setVisible(true);
+			
 			return fullTimeStd;
 		}
 		

@@ -7,7 +7,7 @@ public class FullTimeStd extends Student{
 	String Minor1;
 	String Minor2;
 	String ReferalProf;
-	int avgGrade;
+	Long avgGrade;
 	
 	public FullTimeStd() {
 		super();
@@ -21,7 +21,7 @@ public class FullTimeStd extends Student{
 	}
 	
 	public FullTimeStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse, int id_Student,
-			int levelOfStudie, String major, String minor1, String minor2, String referalProf, int avgGrade) {
+			int levelOfStudie, String major, String minor1, String minor2, String referalProf, Long avgGrade) {
 		super(name, surname, field_Of_Studie, adresse, id_Student);
 		this.levelOfStudie = levelOfStudie;
 		Major = major;
@@ -32,7 +32,7 @@ public class FullTimeStd extends Student{
 	}
 	
 	public FullTimeStd(int levelOfStudie, String major, String minor1, String minor2, String referalProf,
-			int avgGrade) {
+			Long avgGrade) {
 		super();
 		this.levelOfStudie = levelOfStudie;
 		Major = major;
@@ -104,17 +104,21 @@ public class FullTimeStd extends Student{
 	/**
 	 * @return the avgGrade
 	 */
-	public int getAvgGrade() {
+	public Long getAvgGrade() {
 		return avgGrade;
 	}
 	/**
 	 * @param avgGrade the avgGrade to set
 	 */
-	public void setAvgGrade(int avgGrade) {
+	public void setAvgGrade(Long avgGrade) {
 		this.avgGrade = avgGrade;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
+				" Level od Studie"+ this.levelOfStudie + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
+	}
 	
 	
 	
