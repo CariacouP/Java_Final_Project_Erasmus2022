@@ -13,6 +13,7 @@ public class FullTimeStd extends Student{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public FullTimeStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse,
 			int id_Student) {
 		super(name, surname, field_Of_Studie, adresse, id_Student);

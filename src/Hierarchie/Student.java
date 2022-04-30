@@ -1,54 +1,54 @@
 package Hierarchie;
 
 public class Student {
-	String name;
-	String Surname;
-	String Field_Of_Studie;
-	Adresse Adresse;
-	int id_Student;
+	static String name;
+	static String Surname;
+	static String Field_Of_Studie;
+	static Adresse Adresse;
+	static int id_Student;
 	
 	public Student() {
 		
 	}
 	
-	public Student(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse, int id_Student) {
+	public Student(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Hierarchie.Adresse adresse, int id_StudentGiven) {
 		super();
-		this.name = name;
-		Surname = surname;
-		Field_Of_Studie = field_Of_Studie;
+		name = nameGiven;
+		Surname = surnameGiven;
+		Field_Of_Studie = field_Of_StudieGiven;
 		Adresse = adresse;
-		this.id_Student = id_Student;
+		id_Student = id_StudentGiven;
 	}
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public static void setName(String nameGiven) {
+		name = nameGiven;
 	}
 	public String getSurname() {
 		return Surname;
 	}
-	public void setSurname(String surname) {
-		Surname = surname;
+	public static void setSurname(String surnameGiven) {
+		Surname = surnameGiven;
 	}
 	public String getField_Of_Studie() {
 		return Field_Of_Studie;
 	}
-	public void setField_Of_Studie(String field_Of_Studie) {
-		Field_Of_Studie = field_Of_Studie;
+	public static void setField_Of_Studie(String field_Of_StudieGiven) {
+		Field_Of_Studie = field_Of_StudieGiven;
 	}
-	public Adresse getAdresse() {
+	public static Adresse getAdresse() {
 		return Adresse;
 	}
-	public void setAdresse(Adresse adresse) {
-		Adresse = adresse;
+	public static  void setAdresse(Adresse adresseGiven) {
+		Adresse = adresseGiven;
 	}
 	public int getId_Student() {
 		return id_Student;
 	}
-	public void setId_Student(int id_Student) {
-		this.id_Student = id_Student;
+	public static void setId_Student(int id_StudentGiven) {
+		id_Student = id_StudentGiven;
 	}
 	
 	

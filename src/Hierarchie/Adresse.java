@@ -1,7 +1,7 @@
 package Hierarchie;
 
 public class Adresse {
-	int number;
+	String number;
 	String street;
 	String town;
 	String zipCode;
@@ -9,7 +9,7 @@ public class Adresse {
 	
 	
 
-	public Adresse(int number, String street, String town, String zipCode, String country) {
+	public Adresse(String number, String street, String town, String zipCode, String country) {
 		super();
 		this.number = number;
 		this.street = street;
@@ -17,10 +17,10 @@ public class Adresse {
 		this.zipCode = zipCode;
 		Country = country;
 	}
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	public String getStreet() {
@@ -40,5 +40,9 @@ public class Adresse {
 	}
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+	
+	public String toString() {
+		return number+","+street+" "+town+" "+zipCode+" "+Country ;
 	}
 }
