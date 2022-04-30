@@ -7,7 +7,7 @@ public class FullTimeStd extends Student{
 	String Minor1;
 	String Minor2;
 	String ReferalProf;
-	Long avgGrade;
+	Float avgGrade;
 	
 	public FullTimeStd() {
 		super();
@@ -21,7 +21,7 @@ public class FullTimeStd extends Student{
 	}
 	
 	public FullTimeStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse, int id_Student,
-			int levelOfStudie, String major, String minor1, String minor2, String referalProf, Long avgGrade) {
+			int levelOfStudie, String major, String minor1, String minor2, String referalProf, Float avgGrade) {
 		super(name, surname, field_Of_Studie, adresse, id_Student);
 		this.levelOfStudie = levelOfStudie;
 		Major = major;
@@ -32,7 +32,7 @@ public class FullTimeStd extends Student{
 	}
 	
 	public FullTimeStd(int levelOfStudie, String major, String minor1, String minor2, String referalProf,
-			Long avgGrade) {
+			Float avgGrade) {
 		super();
 		this.levelOfStudie = levelOfStudie;
 		Major = major;
@@ -104,13 +104,13 @@ public class FullTimeStd extends Student{
 	/**
 	 * @return the avgGrade
 	 */
-	public Long getAvgGrade() {
+	public Float getAvgGrade() {
 		return avgGrade;
 	}
 	/**
 	 * @param avgGrade the avgGrade to set
 	 */
-	public void setAvgGrade(Long avgGrade) {
+	public void setAvgGrade(Float avgGrade) {
 		this.avgGrade = avgGrade;
 	}
 	

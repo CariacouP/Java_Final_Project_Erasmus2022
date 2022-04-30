@@ -10,12 +10,8 @@ import java.awt.FlowLayout;
 import java.awt.*;
 
 public class InputStdWdw extends JFrame {
-		String name ;
-		String surname;
-		String Field_of_Studie;
-		String Type_Studie;	
-		Adresse student_Adress;
 		
+		Boolean submit=false;
 		Student newStudent = new Student();
 		
 		JPanel PButton=new JPanel();
@@ -142,22 +138,30 @@ public class InputStdWdw extends JFrame {
 			System.out.println("3");
 			bn_addStd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
+					String name ;
+					String surname;
+					String Field_of_Studie;
+					String Type_Studie;	
+					Adresse student_Adress;
+					
 					name = tf_name.getText();
 					surname=tf_Surname.getText();
 					Field_of_Studie = tf_Field_of_Studie.getText();
 					Type_Studie=(String) cb_Type_Studie.getSelectedItem();
 					student_Adress= new Adresse(tf_Number.getText(),tf_Street.getText(),tf_Town.getText(),tf_ZipCode.getText(),tf_Country.getText());
+					
+					
 					System.out.println(name+" "+surname+" "+Field_of_Studie+" "+Type_Studie+" "+student_Adress.toString());
-					newStudent.setName(name);
-					newStudent.setSurname(surname);
-					newStudent.setField_Of_Studie(Field_of_Studie);
-					newStudent.setAdresse(student_Adress);
+					Student.setName(name);
+					Student.setSurname(surname);
+					Student.setField_Of_Studie(Field_of_Studie);
+					Student.setAdresse(student_Adress);
 					
 					if (Type_Studie=="Full time student") {
 						//this.removeAll();
 						
 						FullTimeStd fullTimeStd = InputFullTimeStd(newStudent);
-						System.out.println(fullTimeStd.toString());
+						
 					}
 					
 					
@@ -178,6 +182,7 @@ public class InputStdWdw extends JFrame {
 		
 		public FullTimeStd InputFullTimeStd(Student student){
 			FullTimeStd fullTimeStd;
+			
 			
 			
 			
@@ -242,6 +247,7 @@ public class InputStdWdw extends JFrame {
 			PanelFullTimeStudent.add(PavgGrade);
 			PanelFullTimeStudent.add(PButtonSubmit);
 			this.add(PanelFullTimeStudent);
+			setVisible(true);
 			
 			bn_addSubmit.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -250,15 +256,15 @@ public class InputStdWdw extends JFrame {
 					String Minor1;
 					String Minor2;
 					String ReferalProf;
-					Long avgGrade;
+					Float avgGrade;
 					
 					levelOfStudie = Integer.parseInt((String)cb_level.getSelectedItem());
 					Major=tf_Major.getText();
 					Minor1 = tf_Minor1.getText();
 					Minor2= tf_Minor2.getText();
 					ReferalProf= tf_ReferalProf.getText();
-					avgGrade=Long.parseLong(tf_AvgGrade.getText());
-					System.out.println(name+" "+surname+" "+Field_of_Studie+" "+Type_Studie+" "+student_Adress.toString());
+					avgGrade=Float.valueOf(tf_AvgGrade.getText());
+					
 					
 					fullTimeStd.setAvgGrade(avgGrade);
 					fullTimeStd.setLevelOfStudie(levelOfStudie);
@@ -266,13 +272,13 @@ public class InputStdWdw extends JFrame {
 					fullTimeStd.setMinor1(Minor1);
 					fullTimeStd.setMinor2(Minor2);
 					fullTimeStd.setReferalProf(ReferalProf);
+					System.out.println(fullTimeStd.toString());
 					
 					
 				}
 			});			
 			
 		
-			this.setVisible(true);
 			
 			return fullTimeStd;
 		}
