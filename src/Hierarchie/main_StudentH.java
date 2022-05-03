@@ -29,8 +29,13 @@ public class main_StudentH extends JFrame {
 				System.out.println("3");
 				System.out.println(newFullStd.toString());
 				
+			}
+			
+			else if (newStd.typeOfStudie=="Part time Student") {
+				PartTimeStd newPartStd= new PartTimeStd(newStd.name,newStd.Surname,newStd.Field_Of_Studie,newStd.Adresse,newStd.id_Student);
 				
-				
+				newPartStd.windowInputPartTimeStd();
+				System.out.println(newPartStd.toString());
 			}
 		//System.out.println(newStd.toString());
 		
