@@ -37,6 +37,13 @@ public class main_StudentH extends JFrame {
 				newPartStd.windowInputPartTimeStd();
 				System.out.println(newPartStd.toString());
 			}
+			
+			else if (newStd.typeOfStudie=="Erasmus Student") {
+				ErasmusStd newErasmusStd= new ErasmusStd(newStd.name,newStd.Surname,newStd.Field_Of_Studie,newStd.Adresse,newStd.id_Student);
+				
+				newErasmusStd.windowInputErasmusStd();
+				System.out.println(newErasmusStd.toString());
+			}
 		//System.out.println(newStd.toString());
 		
 	}
