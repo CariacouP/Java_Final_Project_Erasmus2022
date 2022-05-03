@@ -1,6 +1,16 @@
 package Hierarchie;
 
-public class FullTimeStd extends Student{
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class FullTimeStd extends Student {
 
 	int levelOfStudie; // betwen 1 and 5
 	String Major;
@@ -8,6 +18,26 @@ public class FullTimeStd extends Student{
 	String Minor2;
 	String ReferalProf;
 	Float avgGrade;
+	boolean submitFull=false;
+	
+	static JPanel PLevelOfStudie = new JPanel();
+	static JPanel PMajor = new JPanel();
+	static JPanel PMinor1 = new JPanel();
+	static JPanel PMinor2 = new JPanel();
+	static JPanel PReferalProf = new JPanel();
+	static JPanel PavgGrade = new JPanel();
+	static JPanel PanelFullTimeStudent = new JPanel();
+	static JPanel PButtonSubmit=new JPanel();
+	
+	JTextField tf_Major;
+	JTextField tf_Minor1;
+	JTextField tf_Minor2;
+	JTextField tf_ReferalProf;
+	JTextField tf_AvgGrade;
+	
+	JComboBox<String> cb_level;  //pour récupérer en string int recupVal = Integer.parseInt((String)myComboBox.getSelectedItem())
+	JButton bn_addSubmit ;
+	
 	
 	public FullTimeStd() {
 		super();
@@ -120,9 +150,106 @@ public class FullTimeStd extends Student{
 				" Level od Studie"+ this.levelOfStudie + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
+	@Override
+	void windowBUilder() {
+		setSize(700,700);
+		setLayout(new GridLayout(0,2));
+		
+		
+		
+		
+		
+		cb_level= new JComboBox<String>();
+		cb_level.addItem("1");
+		cb_level.addItem("2");
+		cb_level.addItem("3");
+		cb_level.addItem("4");
+		cb_level.addItem("5");
+		cb_level.addItem("6");
+		cb_level.addItem("7");
+		cb_level.addItem("8");
+		
+		PLevelOfStudie.add(new JLabel("year of Studie : "));
+		PLevelOfStudie.add(cb_level);
+		
+		PMajor.add(new JLabel("Major : "));
+		PMajor.add(tf_Major=new JTextField(10));
+		
+		PMinor1.add(new JLabel("Minor 1 : "));
+		PMinor1.add(tf_Minor1=new JTextField(10));
+		
+		PMinor2.add(new JLabel("Minor 2 : "));
+		PMinor2.add(tf_Minor2=new JTextField(10));
+		
+		PReferalProf.add(new JLabel("Refferal Prof : "));
+		PReferalProf.add(tf_ReferalProf=new JTextField(10));
+		
+		PavgGrade.add(new JLabel("Average Grade"));
+		PavgGrade.add(tf_AvgGrade=new JTextField(10));
+		
+		bn_addSubmit = new JButton("Submit");
+		PButtonSubmit.add(bn_addSubmit);
+		
+		
+		
+		PanelFullTimeStudent.add(PLevelOfStudie);
+		PanelFullTimeStudent.add(PMajor);
+		PanelFullTimeStudent.add(PMinor1);
+		PanelFullTimeStudent.add(PMinor2);
+		PanelFullTimeStudent.add(PReferalProf);
+		PanelFullTimeStudent.add(PavgGrade);
+		PanelFullTimeStudent.add(PButtonSubmit);
+		
+		
+	}
+	public void windowInputFullTimeStd(){
+		
+		
+		
+		remove(Student.PanelStudent);
+		
+		windowBUilder();
+		
+		add(PanelFullTimeStudent);
+		setVisible(true);
+		
+		bn_addSubmit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int levelOfStudieGiven ; // betwen 1 and 5
+				String MajorGiven ;
+				String Minor1Given;
+				String Minor2Given;
+				String ReferalProfGiven;
+				Float avgGradeGiven;
+				
+				
+				levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
+				MajorGiven=tf_Major.getText();
+				Minor1Given = tf_Minor1.getText();
+				Minor2Given= tf_Minor2.getText();
+				ReferalProfGiven= tf_ReferalProf.getText();
+				avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				
+				
+				levelOfStudie=levelOfStudieGiven; // betwen 1 and 5
+				Major=MajorGiven;
+				Minor1=Minor1Given;
+				Minor2=Minor2Given;
+				ReferalProf=ReferalProfGiven;
+				avgGrade=avgGradeGiven;
+				System.out.println(toString());
+				
+				submitFull=true;
+			}
+		});	
+		
+		while (submitFull==false) {
+			System.out.print("");
+		}
 	
-	
-	
+		
+		
+	}
 	
 	
 }
