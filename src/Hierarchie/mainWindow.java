@@ -47,25 +47,25 @@ public class mainWindow extends JFrame implements ActionListener{
 		JPanel headerPanel = new JPanel(); // create a headerPanel
 		headerPanel.setLayout(new FlowLayout());
 		headerPanel.add(label); // add the label to the headerPanel
-		//headerPanel.setBackground(Color.WHITE);//set Background color of the headerPanel
+		headerPanel.setBackground(Color.WHITE);//set Background color of the headerPanel
 		headerPanel.setPreferredSize(new Dimension(960,120)); //set the place of the headerPanel
 		
 		JPanel searchBar = new JPanel(); //create a searchBar Panel
 		searchBar.setLayout(new FlowLayout());
 		searchBar.add(textfield); // add the textField to the middle Panel
 		searchBar.add(bSearch); // add the Search button
-		//searchBar.setBackground(Color.WHITE);//set Background color of the headerPanel
+		searchBar.setBackground(Color.WHITE);//set Background color of the headerPanel
 		
 		
 		JPanel ButtonList = new JPanel(); // add a new Buttons Panel
 		ButtonList.setLayout(new FlowLayout()); // set a grid layout for the two buttons
 		ButtonList.add(ListingS); //add the button Listing S to the layout
-		//ButtonList.setBackground(Color.WHITE);//set Background color of the headerPanel
+		ButtonList.setBackground(Color.WHITE);//set Background color of the headerPanel
 		
 		JPanel ButtonAdd = new JPanel(); // add a new Buttons Panel
 		ButtonAdd.setLayout(new FlowLayout()); // set a grid layout for the two buttons
 		ButtonAdd.add(addS); //add the button addS to the layout
-		//ButtonAdd.setBackground(Color.WHITE);//set Background color of the headerPanel
+		ButtonAdd.setBackground(Color.WHITE);//set Background color of the headerPanel
 		
 		
 		this.add(headerPanel); // add the header panel to the window
@@ -74,7 +74,7 @@ public class mainWindow extends JFrame implements ActionListener{
 		this.add(ButtonAdd); // add the Buttons panel to the window
 		
 		this.setResizable(false); // prevent this from being resize
-		//this.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
+		this.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //exit out of application
 		this.setVisible(true); //make the this visible
 	}
@@ -83,8 +83,8 @@ public class mainWindow extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==bSearch) {
-			/*this.getContentPane().removeAll();
-			this.repaint();*/
+			this.getContentPane().removeAll();
+			this.repaint();
 		}
 	}
 	
