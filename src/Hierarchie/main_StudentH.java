@@ -1,10 +1,9 @@
 package Hierarchie;
-import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
-import java.awt.*;
+
 
 public class main_StudentH extends JFrame {
 
@@ -15,8 +14,7 @@ public class main_StudentH extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
-	}
+	
 	
 	public void createNewStudent() {
 		
