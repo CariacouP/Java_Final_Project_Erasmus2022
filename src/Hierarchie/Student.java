@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Student extends main_StudentH{
+public class Student extends mainWindow{
 	/**
 	 * 
 	 */
