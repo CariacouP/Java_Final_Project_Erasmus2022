@@ -62,12 +62,13 @@ public class Student extends mainWindow{
 		
 	}
 	
-	public Student(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Adresse adresse, int id_StudentGiven) {
+	public Student(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String type_of_studie, Adresse adresse, int id_StudentGiven) {
 		super();
 		name = nameGiven;
 		Surname = surnameGiven;
 		Field_Of_Studie = field_Of_StudieGiven;
 		Adresse = adresse;
+		typeOfStudie=type_of_studie;
 		id_Student = id_StudentGiven;
 	}
 	
@@ -234,9 +235,9 @@ public class Student extends mainWindow{
 				if (typeOfStudie=="Full time student") {
 					//this.removeAll();
 					
-					FullTimeStd newFullStd= new FullTimeStd(name,Surname,Field_Of_Studie,Adresse,i);
+					FullTimeStd newFullStd= new FullTimeStd(name,Surname,Field_Of_Studie,typeOfStudie,Adresse,i);
 					frameStd.dispose();		
-					newFullStd.windowInputFullTimeStd(students,i+1);
+					newFullStd.windowInputFullTimeStd(students,i);
 					
 					
 					
@@ -249,12 +250,10 @@ public class Student extends mainWindow{
 						
 				else if (typeOfStudie=="Part time Student") {
 					
-					PartTimeStd newPartStd= new PartTimeStd(name,Surname,Field_Of_Studie,Adresse,i);
+					PartTimeStd newPartStd= new PartTimeStd(name,Surname,Field_Of_Studie,typeOfStudie,Adresse,i);
 					frameStd.dispose();
-					newPartStd.windowInputPartTimeStd();
-					students[i]=newPartStd;
-					System.out.println(students[i].toString());
-					mainWindowBuilder(students,i+1);
+					newPartStd.windowInputPartTimeStd(students,i);
+			
 					
 					
 					
@@ -262,13 +261,12 @@ public class Student extends mainWindow{
 				}
 						
 				else if (typeOfStudie=="Erasmus Student") {
-					ErasmusStd newErasmusStd= new ErasmusStd(name,Surname,Field_Of_Studie,Adresse,i);
+					ErasmusStd newErasmusStd= new ErasmusStd(name,Surname,Field_Of_Studie,typeOfStudie,Adresse,i);
 					frameStd.dispose();
-					newErasmusStd.windowInputErasmusStd();
-					students[i]=newErasmusStd;
-					System.out.println(students[i].toString());
-					mainWindowBuilder(students,i+1);
-									}
+					newErasmusStd.windowInputErasmusStd(students,i);
+					
+					
+					}
 				
 				
 				

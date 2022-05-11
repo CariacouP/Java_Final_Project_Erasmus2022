@@ -78,12 +78,46 @@ public class ErasmusStd extends Student
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ErasmusStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse, int id_Student) {
-		super(name, surname, field_Of_Studie, adresse, id_Student);
+	public ErasmusStd(String name, String surname, String field_Of_Studie,String typeOfStudie ,Hierarchie.Adresse adresse, int id_Student) {
+		super(name, surname, field_Of_Studie,typeOfStudie, adresse, id_Student);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
+	/**
+	 * @param nameGiven
+	 * @param surnameGiven
+	 * @param field_Of_StudieGiven
+	 * @param adresse
+	 * @param id_StudentGiven
+	 * @param frameErasmusTStd
+	 * @param levelOfStudie
+	 * @param major
+	 * @param minor1
+	 * @param minor2
+	 * @param referalProf
+	 * @param avgGrade
+	 * @param localAdresse
+	 * @param univversityOfOrigin
+	 * @param countryOfOrigin
+	 */
+	public ErasmusStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String typeOfStudie, Hierarchie.Adresse adresse,
+			int id_StudentGiven, int levelOfStudie, String major, String minor1, String minor2,
+			String referalProf, float avgGrade, Hierarchie.Adresse localAdresse, String univversityOfOrigin,
+			String countryOfOrigin) {
+		super(nameGiven, surnameGiven, field_Of_StudieGiven,typeOfStudie, adresse, id_StudentGiven);
+		
+		this.levelOfStudie = levelOfStudie;
+		Major = major;
+		Minor1 = minor1;
+		Minor2 = minor2;
+		ReferalProf = referalProf;
+		this.avgGrade = avgGrade;
+		this.localAdresse = localAdresse;
+		UnivversityOfOrigin = univversityOfOrigin;
+		CountryOfOrigin = countryOfOrigin;
+	}
+
 	/**
 	 * @return the levelOfStudie
 	 */
@@ -329,7 +363,7 @@ public class ErasmusStd extends Student
 		
 	}
 	
-void windowInputErasmusStd() {
+void windowInputErasmusStd(Student[] students, int i) {
 		
 		windowBUilder();
 		
@@ -418,6 +452,16 @@ void windowInputErasmusStd() {
 				UnivversityOfOrigin=UniversityOriginGiven;
 				CountryOfOrigin=CountryOriginGiven;
 				
+				
+				
+				
+				students[i]= new ErasmusStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
+						 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade,localAdresse,UnivversityOfOrigin,CountryOfOrigin);
+				
+				
+				
+				
+				mainWindowBuilder(students,i+1);
 				frameErasmusTStd.dispose();
 				
 				

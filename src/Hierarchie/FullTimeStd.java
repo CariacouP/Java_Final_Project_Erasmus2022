@@ -50,15 +50,15 @@ public class FullTimeStd extends Student {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public FullTimeStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse,
+	public FullTimeStd(String name, String surname, String field_Of_Studie,String typeOfStudie, Hierarchie.Adresse adresse,
 			int id_Student) {
-		super(name, surname, field_Of_Studie, adresse, id_Student);
+		super(name, surname, field_Of_Studie,typeOfStudie, adresse, id_Student);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public FullTimeStd(String name, String surname, String field_Of_Studie, Hierarchie.Adresse adresse, int id_Student,
+	public FullTimeStd(String name, String surname, String field_Of_Studie,String typeOfStudie, Hierarchie.Adresse adresse, int id_Student,
 			int levelOfStudie, String major, String minor1, String minor2, String referalProf, Float avgGrade) {
-		super(name, surname, field_Of_Studie, adresse, id_Student);
+		super(name, surname, field_Of_Studie,typeOfStudie, adresse, id_Student);
 		this.levelOfStudie = levelOfStudie;
 		Major = major;
 		Minor1 = minor1;
@@ -276,11 +276,6 @@ public class FullTimeStd extends Student {
 					avgGradeGiven = (float) 0.0;
 				}
 				
-				
-				
-				
-				
-				
 				levelOfStudie=levelOfStudieGiven; // between 1 and 5
 				Major=MajorGiven;
 				Minor1=Minor1Given;
@@ -290,19 +285,16 @@ public class FullTimeStd extends Student {
 		
 				
 				submitFull=true;
-				students[i]= new FullTimeStd( name,  Surname,  Field_Of_Studie, Adresse,  i,
+				students[i]= new FullTimeStd( name,  Surname,  Field_Of_Studie,typeOfStudie, Adresse,  i,
 						 levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
-				System.out.println(students[i].toString());
+				
 				mainWindowBuilder(students,i+1);
 				frameFullTStd.dispose();
-				//students[i]=new FullTimeStd(name,  Surname,  Field_Of_Studie,Adresse, i, levelOfStudie,  Major,  Minor1,  Minor2, ReferalProf, avgGrade);
-				
-				//System.out.println(students[i].toString());
-				//i++;
 				
 				
 				
-				//
+				
+				
 			}
 		});	
 		

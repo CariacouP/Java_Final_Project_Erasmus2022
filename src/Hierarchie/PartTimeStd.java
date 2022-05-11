@@ -54,7 +54,7 @@ public class PartTimeStd extends Student{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @param nameGiven
 	 * @param surnameGiven
@@ -62,9 +62,28 @@ public class PartTimeStd extends Student{
 	 * @param adresse
 	 * @param id_StudentGiven
 	 */
-	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Hierarchie.Adresse adresse,
+	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String typeOfStudie, Hierarchie.Adresse adresse,
 			int id_StudentGiven) {
-		super(nameGiven, surnameGiven, field_Of_StudieGiven, adresse, id_StudentGiven);
+		super(nameGiven, surnameGiven, field_Of_StudieGiven,typeOfStudie, adresse, id_StudentGiven);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param nameGiven
+	 * @param surnameGiven
+	 * @param field_Of_StudieGiven
+	 * @param adresse
+	 * @param id_StudentGiven
+	 * @param avgGrade2 
+	 * @param referalProf2 
+	 * @param minor22 
+	 * @param minor12 
+	 * @param major2 
+	 * @param levelOfStudie2 
+	 */
+	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String typeOfStudie, Hierarchie.Adresse adresse,
+			int id_StudentGiven, int levelOfStudie2, String major2, String minor12, String minor22, String referalProf2, float avgGrade2) {
+		super(nameGiven, surnameGiven, field_Of_StudieGiven,typeOfStudie, adresse, id_StudentGiven);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -169,7 +188,7 @@ public class PartTimeStd extends Student{
 	@Override
 	public String toString() {
 		return "id : "+ id_Student+"name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
-				"Level of Studie : "+ this.levelOfStudie+" Number of hours "+ this.NumberOfHours + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
+				"Level of Studie : "+ this.levelOfStudie+" Number of hours : "+ this.NumberOfHours + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
 	
@@ -241,7 +260,7 @@ public class PartTimeStd extends Student{
 		
 		
 	}
-	public void windowInputPartTimeStd(){
+	public void windowInputPartTimeStd(Student[] students,int i){
 		
 		
 		
@@ -317,7 +336,10 @@ public class PartTimeStd extends Student{
 				
 				
 				submitPart=true;
-				
+				students[i]= new PartTimeStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
+						 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
+		
+				mainWindowBuilder(students,i+1);
 				framePartTimeTStd.dispose();
 				
 				

@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.*;
+import javax.swing.JScrollPane;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class mainWindow /*implements ActionListener*/{
 	
@@ -57,7 +61,7 @@ public class mainWindow /*implements ActionListener*/{
 		ListingS.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				
-				listAll(students);
+				listAll(students,i);
 				
 			}	
 				
@@ -138,20 +142,59 @@ public class mainWindow /*implements ActionListener*/{
 		
 	}	
 	
-	public void listAll(Student[] studentList) {
+	public void listAll(Student[] studentList, int i ) {
 		
-		JFrame FrameList = new JFrame();
-		
-		FrameList.setTitle("Student"); // set the title of the window
-		FrameList.setSize(960,540); //set the x-dimension and the y-dimension of the this
-		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
-		FrameList.setIconImage(icon); // replace the standard icon of the window
-		FrameList.setLayout(new GridLayout(4,1));
-		
-		for (int j=0;j<studentList.length;j++) {
+		for (int j=0;j<i;j++) {
 			System.out.println(j);
 			System.out.println(studentList[j].toString());
 		}
+		
+		
+		JFrame FrameList = new JFrame();
+		FrameList.setTitle("Student"); // set the title of the window
+		FrameList.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		FrameList.setLocationRelativeTo(null);
+		
+		
+		
+		
+		//JPanel PList = new JPanel();
+		
+		
+		
+		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student"};
+		/*
+		Object[][] data = {{0,"Luca","Bankofski","Computer science","Full Time Student"},
+				 			{1,"Alexis","Marie","Computer science","Full Time Student"},
+		 					{2,"Geraud","Cazenave","Marine","Part time Stude,t"}};
+		 */
+		 
+		 Object[][] data = new Object [i][5];
+		 
+		 
+		 for (int j = 0; j<i;j++) {
+			data[j][0]= studentList[j].id_Student;
+			data[j][1]=studentList[j].name;
+			data[j][2]=studentList[j].Surname;
+			data[j][3]=studentList[j].Field_Of_Studie;
+			data[j][4]=studentList[j].typeOfStudie;
+		 }
+		 
+		 
+		DefaultTableModel model= new DefaultTableModel(data, title);
+		 
+		JTable Table = new JTable(model);
+		Table.setRowHeight(50);
+		FrameList.getContentPane().add(new JScrollPane(Table));
+		 
+		
+
+		
+		FrameList.setVisible(true);
+		
+		
+		
+		
 		
 		
 	}
