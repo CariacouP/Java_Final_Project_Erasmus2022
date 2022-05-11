@@ -1,17 +1,22 @@
 package Hierarchie;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ErasmusStd extends Student
 {	
+	JFrame frameErasmusTStd =new JFrame();
+	
 	int levelOfStudie; // betwen 1 and 5
 	String Major;
 	String Minor1;
@@ -207,7 +212,7 @@ public class ErasmusStd extends Student
 	
 	@Override
 	public String toString() {
-		return "name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
+		return "id : "+ id_Student+"name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
 				" Level od Studie"+ this.levelOfStudie + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+
 				"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade +" Local Adress : "+localAdresse + 
 				"University of Origin : " +UnivversityOfOrigin+ "Country of Origin : "+ CountryOfOrigin ;
@@ -215,8 +220,15 @@ public class ErasmusStd extends Student
 	
 	@Override
 	void windowBUilder() {
-		setSize(700,700);
-		setLayout(new GridLayout(0,2));
+		
+		
+		
+		frameErasmusTStd.setTitle("Student"); // set the title of the window
+		frameErasmusTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
+		frameErasmusTStd.setIconImage(icon); // replace the standard icon of the window
+		frameErasmusTStd.setLayout(new GridLayout(0,2));
+		
 
 		
 		cb_level= new JComboBox<String>();
@@ -230,25 +242,31 @@ public class ErasmusStd extends Student
 		cb_level.addItem("8");
 		
 		//PNumber.setLayout(new GridLayout(6,1));
+		PNumber.removeAll();
 		PNumber.add(new JLabel("Number :"));			
 		PNumber.add(tf_Number=new JTextField(10));
 		
 		//PStreet.setLayout(new GridLayout(6,2));
+		PStreet.removeAll();
 		PStreet.add(new JLabel("Street :"));			
 		PStreet.add(tf_Street=new JTextField(10));			
 		
 		//PTown.setLayout(new GridLayout(7,1));
+		PTown.removeAll();
 		PTown.add(new JLabel("Town :"));
 		PTown.add(tf_Town=new JTextField(10));
 		
-		//PZipCode.setLayout(new GridLayout(7,2));
+		//PZipCode.setLayout(new GridLayout(7,2))
+		PZipCode.removeAll();
 		PZipCode.add(new JLabel("Zip Code :"));
 		PZipCode.add(tf_ZipCode=new JTextField(10));
 		
 		//PCountry.setLayout(new GridLayout(7,3));
+		PCountry.removeAll();
 		PCountry.add(new JLabel("Country :"));
 		PCountry.add(tf_Country=new JTextField(10));
 		
+		PAdress.removeAll();
 		PAdress.add(new JLabel("Adress :"));
 		PAdress.add(PNumber);
 		PAdress.add(PStreet);
@@ -256,31 +274,41 @@ public class ErasmusStd extends Student
 		PAdress.add(PZipCode);
 		PAdress.add(PCountry);
 		
+		PLevelOfStudie.removeAll();
 		PLevelOfStudie.add(new JLabel("year of Studie : "));
 		PLevelOfStudie.add(cb_level);
 		
+		PMajor.removeAll();
 		PMajor.add(new JLabel("Major : "));
 		PMajor.add(tf_Major=new JTextField(10));
 		
+		PMinor1.removeAll();
 		PMinor1.add(new JLabel("Minor 1 : "));
 		PMinor1.add(tf_Minor1=new JTextField(10));
 		
+		PMinor2.removeAll();
 		PMinor2.add(new JLabel("Minor 2 : "));
 		PMinor2.add(tf_Minor2=new JTextField(10));
 		
+		PReferalProf.removeAll();
 		PReferalProf.add(new JLabel("Refferal Prof : "));
 		PReferalProf.add(tf_ReferalProf=new JTextField(10));
 		
+		PavgGrade.removeAll();
 		PavgGrade.add(new JLabel("Average Grade"));
 		PavgGrade.add(tf_AvgGrade=new JTextField(10));
 		
+		PUnivversityOfOrigin.removeAll();
 		PUnivversityOfOrigin.add(new JLabel("University of origin: "));
 		PUnivversityOfOrigin.add(tf_University_Of_Origin=new JTextField(10));
 		
+		PCountryOfOrigin.removeAll();
 		PCountryOfOrigin.add(new JLabel("Country of origin: "));
 		PCountryOfOrigin.add(tf_Country_Of_Origin=new JTextField(10));
 		
 		bn_addSubmit = new JButton("Submit");
+		
+		PButtonSubmit.removeAll();
 		PButtonSubmit.add(bn_addSubmit);
 		
 		
@@ -306,10 +334,8 @@ void windowInputErasmusStd() {
 		windowBUilder();
 		
 		
-		add(PanelErasmusTimeStudent);
-		
-		
-		setVisible(true);
+		frameErasmusTStd.add(PanelErasmusTimeStudent);
+		frameErasmusTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -323,16 +349,63 @@ void windowInputErasmusStd() {
 				String UniversityOriginGiven;
 				String CountryOriginGiven;
 				
+				try{
+					levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
+				}
+				catch(Exception exeption){
+					levelOfStudieGiven= 0;
+				}
+				try {
+					MajorGiven=tf_Major.getText();
+				}
+				catch(Exception exeption) {
+					MajorGiven="Error";
+				}
+				try {
+					Minor1Given = tf_Minor1.getText();
+				}
+				catch(Exception exeption) {
+					Minor1Given="Error";
+				}
+				try {
+					Minor2Given= tf_Minor2.getText();
+				}
+				catch(Exception exeption) {
+					Minor2Given="Error";
+				}
+				try {
+					ReferalProfGiven= tf_ReferalProf.getText();
+				}
+				catch(Exception exeption) {
+					ReferalProfGiven="Error";
+				}
+				try {
+					avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				}
+				catch(Exception exeption) {
+					avgGradeGiven = (float) 0.0;
+				}
 				
-				levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
-				MajorGiven=tf_Major.getText();
-				Minor1Given = tf_Minor1.getText();
-				Minor2Given= tf_Minor2.getText();
-				ReferalProfGiven= tf_ReferalProf.getText();
-				avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
-				localAdressOGiven = new Adresse(tf_Number.getText(),tf_Street.getText(),tf_Town.getText(),tf_ZipCode.getText(),tf_Country.getText());
-				UniversityOriginGiven=tf_University_Of_Origin.getText();
-				CountryOriginGiven=tf_Country_Of_Origin.getText();
+				try {
+					localAdressOGiven = new Adresse(tf_Number.getText(),tf_Street.getText(),tf_Town.getText(),tf_ZipCode.getText(),tf_Country.getText());
+				}
+				catch(Exception exeption) {
+					localAdressOGiven = null;
+				}
+				try {
+					UniversityOriginGiven=tf_University_Of_Origin.getText();
+				}
+				catch(Exception exeption) {
+					UniversityOriginGiven = "error";
+				}
+				try {
+					CountryOriginGiven=tf_Country_Of_Origin.getText();
+				}
+				catch(Exception exeption) {
+					CountryOriginGiven = "error";
+				}
+				
+				
 				
 				levelOfStudie=levelOfStudieGiven; // betwen 1 and 5
 				Major=MajorGiven;
@@ -344,12 +417,12 @@ void windowInputErasmusStd() {
 				localAdresse=localAdressOGiven;
 				UnivversityOfOrigin=UniversityOriginGiven;
 				CountryOfOrigin=CountryOriginGiven;
+				
+				frameErasmusTStd.dispose();
+				
+				
 			}
 		});
-		
-		while (submitErasmus==false) {
-			System.out.print("");
-		}
 		
 		
 	}

@@ -1,16 +1,22 @@
 package Hierarchie;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PartTimeStd extends Student{
+	
+	
+	JFrame framePartTimeTStd =new JFrame();
 	int NumberOfHours;
 	int levelOfStudie;
 	String Major;
@@ -162,7 +168,7 @@ public class PartTimeStd extends Student{
 
 	@Override
 	public String toString() {
-		return "name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
+		return "id : "+ id_Student+"name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
 				"Level of Studie : "+ this.levelOfStudie+" Number of hours "+ this.NumberOfHours + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
@@ -170,9 +176,21 @@ public class PartTimeStd extends Student{
 
 	@Override
 	void windowBUilder() {
-		setSize(700,700);
-		setLayout(new GridLayout(0,2));
+		framePartTimeTStd.setTitle("Student"); // set the title of the window
+		framePartTimeTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
+		framePartTimeTStd.setIconImage(icon); // replace the standard icon of the window
+		framePartTimeTStd.setLayout(new GridLayout(0,2));
 		
+		PLevelOfStudie.removeAll();
+		PMajor.removeAll();
+		PMinor1.removeAll();
+		PMinor2.removeAll();
+		PReferalProf.removeAll();
+		PavgGrade.removeAll();
+		PButtonSubmit.removeAll();
+		PNumberOfHours.removeAll();
+
 		
 		
 		
@@ -227,12 +245,12 @@ public class PartTimeStd extends Student{
 		
 		
 		
-		remove(Student.PanelStudent);
+		//frameStd.remove(Student.PanelStudent);
 		
 		windowBUilder();
 		
-		add(PanelPartTimeStudent);
-		setVisible(true);
+		framePartTimeTStd.add(PanelPartTimeStudent);
+		framePartTimeTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -244,14 +262,51 @@ public class PartTimeStd extends Student{
 				String ReferalProfGiven;
 				Float avgGradeGiven;
 				
-				numberOfHoursGiven=Integer.parseInt(tf_number_of_Hours.getText());
-				levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
-				MajorGiven=tf_Major.getText();
-				Minor1Given = tf_Minor1.getText();
-				Minor2Given= tf_Minor2.getText();
-				ReferalProfGiven= tf_ReferalProf.getText();
-				avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				try{
+					levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
+				}
+				catch(Exception exeption){
+					levelOfStudieGiven= 0;
+				}
+				try {
+					MajorGiven=tf_Major.getText();
+				}
+				catch(Exception exeption) {
+					MajorGiven="Error";
+				}
+				try {
+					Minor1Given = tf_Minor1.getText();
+				}
+				catch(Exception exeption) {
+					Minor1Given="Error";
+				}
+				try {
+					Minor2Given= tf_Minor2.getText();
+				}
+				catch(Exception exeption) {
+					Minor2Given="Error";
+				}
+				try {
+					ReferalProfGiven= tf_ReferalProf.getText();
+				}
+				catch(Exception exeption) {
+					ReferalProfGiven="Error";
+				}
+				try {
+					avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				}
+				catch(Exception exeption) {
+					avgGradeGiven = (float) 0.0;
+				}
 				
+				try {
+					numberOfHoursGiven=Integer.parseInt(tf_number_of_Hours.getText());
+				}
+				catch(Exception exeption) {
+					numberOfHoursGiven = 0;
+				}
+				
+			
 				NumberOfHours=numberOfHoursGiven;
 				levelOfStudie=levelOfStudieGiven; // betwen 1 and 5
 				Major=MajorGiven;
@@ -259,16 +314,16 @@ public class PartTimeStd extends Student{
 				Minor2=Minor2Given;
 				ReferalProf=ReferalProfGiven;
 				avgGrade=avgGradeGiven;
-				System.out.println(toString());
+				
 				
 				submitPart=true;
+				
+				framePartTimeTStd.dispose();
+				
+				
 			}
 		});	
 		
-		while (submitPart==false) {
-			System.out.print("");
-		}
-	
 		
 		
 	}

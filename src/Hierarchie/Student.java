@@ -1,11 +1,15 @@
 package Hierarchie;
 
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -14,7 +18,8 @@ public class Student extends mainWindow{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	JFrame frameStd =new JFrame();
+	
 	String name;
 	String Surname;
 	String Field_Of_Studie;
@@ -57,7 +62,7 @@ public class Student extends mainWindow{
 		
 	}
 	
-	public Student(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Hierarchie.Adresse adresse, int id_StudentGiven) {
+	public Student(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Adresse adresse, int id_StudentGiven) {
 		super();
 		name = nameGiven;
 		Surname = surnameGiven;
@@ -98,12 +103,29 @@ public class Student extends mainWindow{
 	}
 	
 	public String toString() {
-		return "name: "+name+" Surname : " +Surname + " Field of Studies: "+ Field_Of_Studie+" Adresse : "+ Adresse.toString() +" tyoe of Studies : "+ typeOfStudie;
+		return "id : "+ id_Student+"name: "+name+" Surname : " +Surname + " Field of Studies: "+ Field_Of_Studie+" Adresse : "+ Adresse.toString() +" tyoe of Studies : "+ typeOfStudie;
 	}
 	
 	void windowBUilder() {
-		this.setSize(700,700);
-		this.setLayout(new GridLayout(0,2));
+		PTitle.removeAll();
+		PName.removeAll();
+		PSurname.removeAll();
+		PField_Of_Studie.removeAll();
+		PAdress.removeAll();
+		PNumber.removeAll();
+		PStreet.removeAll();
+		PTown.removeAll();
+		PZipCode.removeAll();
+		PCountry.removeAll();
+		PTypeStd.removeAll();
+		PButton.removeAll();
+		
+		
+		frameStd.setTitle("Student"); // set the title of the window
+		frameStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
+		frameStd.setIconImage(icon); // replace the standard icon of the window
+		frameStd.setLayout(new GridLayout(0,2));
 		
 		//PTitle.setLayout(new GridLayout(1,1));
 		PTitle.add(new JLabel("Student :"));
@@ -171,17 +193,21 @@ public class Student extends mainWindow{
 		PanelStudent.add(PCountry);
 		PanelStudent.add(PTypeStd);
 		PanelStudent.add(PButton);
+
+		frameStd.add(PanelStudent);
+		
+		frameStd.setResizable(false); // prevent this from being resize
+		frameStd.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
+		frameStd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		frameStd.setVisible(true);
 	}
 	
-	void windowInputDataStudent() {
+	void windowInputDataStudent(Student[] students, int i ) {
+		
 		
 		windowBUilder();
 		
 		
-		add(PanelStudent);
-		
-		
-		setVisible(true);
 		
 		bn_addStd.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -197,20 +223,57 @@ public class Student extends mainWindow{
 				Type_StudieGiven=(String) cb_Type_Studie.getSelectedItem();
 				student_AdressGiven= new Adresse(tf_Number.getText(),tf_Street.getText(),tf_Town.getText(),tf_ZipCode.getText(),tf_Country.getText());
 				
-				
 				name=nameGiven;
 				Surname=surnameGiven;
 				Field_Of_Studie=Field_of_StudieGiven;
 				typeOfStudie=Type_StudieGiven;
 				Adresse=student_AdressGiven;
-				submit=true;
+				
+				
+				
+				if (typeOfStudie=="Full time student") {
+					//this.removeAll();
+					
+					FullTimeStd newFullStd= new FullTimeStd(name,Surname,Field_Of_Studie,Adresse,i);
+					frameStd.dispose();		
+					newFullStd.windowInputFullTimeStd(students,i+1);
+					
+					
+					
+					
+					//submit=true;		
+					
+					
+					
+				}
+						
+				else if (typeOfStudie=="Part time Student") {
+					
+					PartTimeStd newPartStd= new PartTimeStd(name,Surname,Field_Of_Studie,Adresse,i);
+					frameStd.dispose();
+					newPartStd.windowInputPartTimeStd();
+					students[i]=newPartStd;
+					System.out.println(students[i].toString());
+					mainWindowBuilder(students,i+1);
+					
+					
+					
+					
+				}
+						
+				else if (typeOfStudie=="Erasmus Student") {
+					ErasmusStd newErasmusStd= new ErasmusStd(name,Surname,Field_Of_Studie,Adresse,i);
+					frameStd.dispose();
+					newErasmusStd.windowInputErasmusStd();
+					students[i]=newErasmusStd;
+					System.out.println(students[i].toString());
+					mainWindowBuilder(students,i+1);
+									}
+				
+				
 				
 			}
 		});
-		
-		while (submit==false) {
-			System.out.print("");
-		}
 		
 		
 	}

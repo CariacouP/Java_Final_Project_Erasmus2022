@@ -1,17 +1,22 @@
 package Hierarchie;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FullTimeStd extends Student {
-
+	
+	
+	JFrame frameFullTStd =new JFrame();
 	int levelOfStudie; // betwen 1 and 5
 	String Major;
 	String Minor1;
@@ -19,6 +24,7 @@ public class FullTimeStd extends Student {
 	String ReferalProf;
 	Float avgGrade;
 	boolean submitFull=false;
+	boolean firstTimestd=true;
 	
 	static JPanel PLevelOfStudie = new JPanel();
 	static JPanel PMajor = new JPanel();
@@ -146,17 +152,27 @@ public class FullTimeStd extends Student {
 	
 	@Override
 	public String toString() {
-		return "name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
+		return "id : "+ id_Student+"name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
 				" Level od Studie"+ this.levelOfStudie + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
 	@Override
 	void windowBUilder() {
-		setSize(700,700);
-		setLayout(new GridLayout(0,2));
+		frameFullTStd.setTitle("Student"); // set the title of the window
+		frameFullTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
+		frameFullTStd.setIconImage(icon); // replace the standard icon of the window
+		frameFullTStd.setLayout(new GridLayout(0,2));
 		
 		
-		
+		PLevelOfStudie.removeAll();
+		PMajor.removeAll();
+		PMinor1.removeAll();
+		PMinor2.removeAll();
+		PReferalProf.removeAll();
+		PavgGrade.removeAll();
+		PButtonSubmit.removeAll();
+	
 		
 		
 		cb_level= new JComboBox<String>();
@@ -202,16 +218,16 @@ public class FullTimeStd extends Student {
 		
 		
 	}
-	public void windowInputFullTimeStd(){
+	public void windowInputFullTimeStd(Student[] students, int i ){
 		
 		
 		
-		remove(Student.PanelStudent);
+		//remove(Student.PanelStudent);
 		
 		windowBUilder();
 		
-		add(PanelFullTimeStudent);
-		setVisible(true);
+		frameFullTStd.add(PanelFullTimeStudent);
+		frameFullTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -223,30 +239,73 @@ public class FullTimeStd extends Student {
 				Float avgGradeGiven;
 				
 				
-				levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
-				MajorGiven=tf_Major.getText();
-				Minor1Given = tf_Minor1.getText();
-				Minor2Given= tf_Minor2.getText();
-				ReferalProfGiven= tf_ReferalProf.getText();
-				avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				try{
+					levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
+				}
+				catch(Exception exeption){
+					levelOfStudieGiven= 0;
+				}
+				try {
+					MajorGiven=tf_Major.getText();
+				}
+				catch(Exception exeption) {
+					MajorGiven="Error";
+				}
+				try {
+					Minor1Given = tf_Minor1.getText();
+				}
+				catch(Exception exeption) {
+					Minor1Given="Error";
+				}
+				try {
+					Minor2Given= tf_Minor2.getText();
+				}
+				catch(Exception exeption) {
+					Minor2Given="Error";
+				}
+				try {
+					ReferalProfGiven= tf_ReferalProf.getText();
+				}
+				catch(Exception exeption) {
+					ReferalProfGiven="Error";
+				}
+				try {
+					avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				}
+				catch(Exception exeption) {
+					avgGradeGiven = (float) 0.0;
+				}
 				
 				
-				levelOfStudie=levelOfStudieGiven; // betwen 1 and 5
+				
+				
+				
+				
+				levelOfStudie=levelOfStudieGiven; // between 1 and 5
 				Major=MajorGiven;
 				Minor1=Minor1Given;
 				Minor2=Minor2Given;
 				ReferalProf=ReferalProfGiven;
 				avgGrade=avgGradeGiven;
-				System.out.println(toString());
+		
 				
 				submitFull=true;
+				students[i]= new FullTimeStd( name,  Surname,  Field_Of_Studie, Adresse,  i,
+						 levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
+				System.out.println(students[i].toString());
+				mainWindowBuilder(students,i+1);
+				frameFullTStd.dispose();
+				//students[i]=new FullTimeStd(name,  Surname,  Field_Of_Studie,Adresse, i, levelOfStudie,  Major,  Minor1,  Minor2, ReferalProf, avgGrade);
+				
+				//System.out.println(students[i].toString());
+				//i++;
+				
+				
+				
+				//
 			}
 		});	
 		
-		while (submitFull==false) {
-			System.out.print("");
-		}
-	
 		
 		
 	}
