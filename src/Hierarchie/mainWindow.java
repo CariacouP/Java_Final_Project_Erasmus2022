@@ -1,16 +1,19 @@
 package Hierarchie;
 
 import javax.swing.*;
+import javax.swing.event.CellEditorListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.*;
-import javax.swing.JScrollPane;
+import java.util.EventObject;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
-public class mainWindow /*implements ActionListener*/{
+public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implements ActionListener*/{
 	
 	JButton bSearch;
 	JButton ListingS;
@@ -25,7 +28,7 @@ public class mainWindow /*implements ActionListener*/{
 	static JPanel ButtonList = new JPanel();
 	static JPanel searchBar = new JPanel();
 	static JPanel headerPanel = new JPanel();
-	
+	int j = 0;
 	mainWindow(){
 		
 		
@@ -144,7 +147,7 @@ public class mainWindow /*implements ActionListener*/{
 	
 	public void listAll(Student[] studentList, int i ) {
 		
-		for (int j=0;j<i;j++) {
+		for (j=0;j<i;j++) {
 			System.out.println(j);
 			System.out.println(studentList[j].toString());
 		}
@@ -155,29 +158,37 @@ public class mainWindow /*implements ActionListener*/{
 		FrameList.setSize(960,540); //set the x-dimension and the y-dimension of the this
 		FrameList.setLocationRelativeTo(null);
 		
+		//JButton bn_giveInformation =new JButton("more information here");
+		
+		
+	
 		
 		
 		
-		//JPanel PList = new JPanel();
-		
-		
-		
-		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student"};
+		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student","More Information"};
 		/*
 		Object[][] data = {{0,"Luca","Bankofski","Computer science","Full Time Student"},
 				 			{1,"Alexis","Marie","Computer science","Full Time Student"},
 		 					{2,"Geraud","Cazenave","Marine","Part time Stude,t"}};
 		 */
 		 
-		 Object[][] data = new Object [i][5];
+		 Object[][] data = new Object [i][6];
 		 
 		 
-		 for (int j = 0; j<i;j++) {
+		 for (j = 0; j<i;j++) {
 			data[j][0]= studentList[j].id_Student;
 			data[j][1]=studentList[j].name;
 			data[j][2]=studentList[j].Surname;
 			data[j][3]=studentList[j].Field_Of_Studie;
 			data[j][4]=studentList[j].typeOfStudie;
+			/*
+			data[j][5]=new JButton("more information here");
+			((AbstractButton) data[j][5]).addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					studentList[j].informationFrame();
+					
+				}
+			});*/
 		 }
 		 
 		 
@@ -185,6 +196,9 @@ public class mainWindow /*implements ActionListener*/{
 		 
 		JTable Table = new JTable(model);
 		Table.setRowHeight(50);
+		
+		
+		
 		FrameList.getContentPane().add(new JScrollPane(Table));
 		 
 		
@@ -198,6 +212,8 @@ public class mainWindow /*implements ActionListener*/{
 		
 		
 	}
+
+	
 }
 
 

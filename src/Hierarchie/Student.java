@@ -275,5 +275,25 @@ public class Student extends mainWindow{
 		
 		
 	}
-
+public void informationFrame() {
+		
+		JFrame informationFrame=new JFrame();
+		informationFrame.setTitle("Student"); // set the title of the window
+		informationFrame.setSize(960,540);
+		informationFrame.setLayout(new GridLayout(0,2));
+		
+		
+		informationFrame.add(new JLabel("Id : "+id_Student));
+		informationFrame.add(new JLabel("Name : "+name));
+		informationFrame.add(new JLabel("Surname : "+ Surname));
+		informationFrame.add(new JLabel("Field of Studies : "+Field_Of_Studie));
+		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
+		informationFrame.add(new JLabel("Adresse : " +Adresse.toString()));
+		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
+		
+		
+		
+		informationFrame.setVisible(true);
+		
+	}
 }

@@ -66,10 +66,6 @@ public class ErasmusStd extends Student
 	JComboBox<String> cb_level;  //pour récupérer en string int recupVal = Integer.parseInt((String)myComboBox.getSelectedItem())
 	JButton bn_addSubmit ;
 	
-	
-	
-	
-
 
 	
 	
@@ -471,8 +467,39 @@ void windowInputErasmusStd(Student[] students, int i) {
 		
 	}
 
+	@Override
+	public void informationFrame() {
 	
-	
+		JFrame informationFrame=new JFrame();
+		informationFrame.setTitle("Student"); // set the title of the window
+		informationFrame.setSize(960,540);
+		informationFrame.setLayout(new GridLayout(0,2));
+		
+		
+		informationFrame.add(new JLabel("Id : "+id_Student));
+		informationFrame.add(new JLabel("Name : "+name));
+		informationFrame.add(new JLabel("Surname : "+ Surname));
+		informationFrame.add(new JLabel("Field of Studies : "+Field_Of_Studie));
+		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
+		informationFrame.add(new JLabel("Adresse : " +Adresse.toString()));
+		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
+		
+		
+		informationFrame.add(new JLabel("Year of Study : "+levelOfStudie));
+		informationFrame.add(new JLabel("Major : "+ Major));
+		informationFrame.add(new JLabel("First Minor : "+Minor1));
+		informationFrame.add(new JLabel("Second Minor : "+Minor2));
+		informationFrame.add(new JLabel("Second Minor : "+Minor2));
+		informationFrame.add(new JLabel("Referal Teacher : "+ReferalProf));
+		informationFrame.add(new JLabel("Average Grade : "+avgGrade));
+		informationFrame.add(new JLabel("Local Adresse : "+localAdresse));
+		informationFrame.add(new JLabel("University of Origin : "+UnivversityOfOrigin));
+		informationFrame.add(new JLabel("Country of Origin: "+CountryOfOrigin));
+		
+		
+		informationFrame.setVisible(true);
+		
+}
 	
 	
 	
