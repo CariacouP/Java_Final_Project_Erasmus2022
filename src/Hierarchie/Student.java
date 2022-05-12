@@ -1,6 +1,8 @@
 package Hierarchie;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -29,6 +31,7 @@ public class Student extends mainWindow{
 	boolean submit=false;
 	
 	static JPanel PButton=new JPanel();
+	
 	// Panel pour l'etuduant de base
 	static JPanel PTitle=new JPanel();
 	static JPanel PName=new JPanel();
@@ -126,76 +129,89 @@ public class Student extends mainWindow{
 		frameStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
 		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
 		frameStd.setIconImage(icon); // replace the standard icon of the window
-		frameStd.setLayout(new GridLayout(0,2));
+		frameStd.setLayout(new GridLayout(12,1));
 		
 		//PTitle.setLayout(new GridLayout(1,1));
-		PTitle.add(new JLabel("Student :"));
+		PTitle.add(new JLabel("COMPLETE STUDENT INFORMATION          "));
 		PTitle.add( new JLabel());
+		PTitle.setBackground(Color.WHITE);
 		
 		//PName.setLayout(new GridLayout(2,1));
 		PName.add(new JLabel("Name :"));		
-		PName.add(tf_name=new JTextField(10));
+		PName.add(tf_name=new JTextField(17));
+		PName.setBackground(Color.WHITE);
 		
 		//PSurname.setLayout(new GridLayout(3,1));
 		PSurname.add(new JLabel("Surname :"));			
-		PSurname.add(tf_Surname=new JTextField(10));
+		PSurname.add(tf_Surname=new JTextField(15));
+		PSurname.setBackground(Color.WHITE);
 		
 		//PField_Of_Studie.setLayout(new GridLayout(4,1));
-		PField_Of_Studie.add(new JLabel("Field of studies"));			
-		PField_Of_Studie.add(tf_Field_of_Studie=new JTextField(10));
+		PField_Of_Studie.add(new JLabel("Field of studies :"));			
+		PField_Of_Studie.add(tf_Field_of_Studie=new JTextField(12));
+		PField_Of_Studie.setBackground(Color.WHITE);
 		
 		//PAdress.setLayout(new GridLayout(5,1));
-		PAdress.add(new JLabel("Adress :"));
+		PAdress.add(new JLabel("Enter student adress                                   "));
 		PAdress.add(new JLabel());
-		
+		PAdress.setBackground(Color.WHITE);
 		
 		//PNumber.setLayout(new GridLayout(6,1));
-		PNumber.add(new JLabel("Number :"));			
-		PNumber.add(tf_Number=new JTextField(10));
+		PNumber.add(new JLabel("Number : "));
+		PNumber.add(tf_Number=new JTextField(15));
+		PNumber.setBackground(Color.WHITE);
 		
 		//PStreet.setLayout(new GridLayout(6,2));
 		PStreet.add(new JLabel("Street :"));			
-		PStreet.add(tf_Street=new JTextField(10));			
+		PStreet.add(tf_Street=new JTextField(16));
+		PStreet.setBackground(Color.WHITE);
 		
 		//PTown.setLayout(new GridLayout(7,1));
-		PTown.add(new JLabel("Town :"));
-		PTown.add(tf_Town=new JTextField(10));
+		PTown.add(new JLabel("Town : "));
+		PTown.add(tf_Town=new JTextField(16));
+		PTown.setBackground(Color.WHITE);
 		
 		//PZipCode.setLayout(new GridLayout(7,2));
-		PZipCode.add(new JLabel("Zip Code :"));
-		PZipCode.add(tf_ZipCode=new JTextField(10));
+		PZipCode.add(new JLabel("Zip Code :  "));
+		PZipCode.add(tf_ZipCode=new JTextField(14));
+		PZipCode.setBackground(Color.WHITE);
 		
 		//PCountry.setLayout(new GridLayout(7,3));
 		PCountry.add(new JLabel("Country :"));
-		PCountry.add(tf_Country=new JTextField(10));
+		PCountry.add(tf_Country=new JTextField(15));
+		PCountry.setBackground(Color.WHITE);
 		
 		//PTypeStd.setLayout(new GridLayout(8,1));
-		PTypeStd.add(new JLabel("Type student :"));
+		PTypeStd.add(new JLabel("Type student :      "));
+		PTypeStd.setBackground(Color.WHITE);
 		
 		cb_Type_Studie = new JComboBox<String>();
 		cb_Type_Studie.addItem("Full time student");
 		cb_Type_Studie.addItem("Part time Student");
 		cb_Type_Studie.addItem("Erasmus Student");
+		
+		
 		PTypeStd.add(cb_Type_Studie);
 		
 		bn_addStd = new JButton("Next");
+		bn_addStd.setForeground(Color.WHITE);
+		bn_addStd.setBackground(new Color(66,133,244));
+		bn_addStd.setPreferredSize(new Dimension(220,20));
+		PButton.setBackground(Color.WHITE);
 		PButton.add(bn_addStd);
-
 		
-		PanelStudent.add(PTitle);
-		PanelStudent.add(PName);
-		PanelStudent.add(PSurname);
-		PanelStudent.add(PField_Of_Studie);
-		PanelStudent.add(PAdress);
-		PanelStudent.add(PNumber);
-		PanelStudent.add(PStreet);
-		PanelStudent.add(PTown);
-		PanelStudent.add(PZipCode);
-		PanelStudent.add(PCountry);
-		PanelStudent.add(PTypeStd);
-		PanelStudent.add(PButton);
-
-		frameStd.add(PanelStudent);
+		frameStd.add(PTitle);
+		frameStd.add(PName);
+		frameStd.add(PSurname);
+		frameStd.add(PField_Of_Studie);
+		frameStd.add(PTypeStd);
+		frameStd.add(PAdress);
+		frameStd.add(PNumber);
+		frameStd.add(PStreet);
+		frameStd.add(PTown);
+		frameStd.add(PZipCode);
+		frameStd.add(PCountry);
+		frameStd.add(PButton);
 		
 		frameStd.setResizable(false); // prevent this from being resize
 		frameStd.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
