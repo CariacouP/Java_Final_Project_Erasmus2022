@@ -15,7 +15,7 @@ import javax.swing.table.TableCellRenderer;
 
 public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implements ActionListener*/{
 	
-	JButton bSearch;
+	//JButton bSearch;
 	JButton ListingS;
 	JButton addS;
 	JTextField textfield;
@@ -26,7 +26,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 	
 	static JPanel ButtonAdd = new JPanel();
 	static JPanel ButtonList = new JPanel();
-	static JPanel searchBar = new JPanel();
+	//static JPanel searchBar = new JPanel();
 	static JPanel headerPanel = new JPanel();
 	int j = 0;
 	mainWindow(){
@@ -50,12 +50,12 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		label.setIcon(image);// set the image on the label
 		
 		textfield = new JTextField("Enter student's name and surname...", 20); //set a TextField
-		
+		/*
 		bSearch = new JButton("Search"); //set a button
 		//bSearch.addActionListener(this); //add an actionListener when the button is pressed
 		bSearch.setForeground(Color.WHITE); //change the color of the text
 		bSearch.setBackground(new Color(155,155,155)); //change the color of the background
-		
+		*/
 		ListingS = new JButton();
 		ListingS.setText("List students");
 		ListingS.setForeground(Color.WHITE);
@@ -92,24 +92,16 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		headerPanel.add(label); // add the label to the headerPanel
 		headerPanel.setBackground(Color.WHITE);//set Background color of the headerPanel
 		headerPanel.setPreferredSize(new Dimension(960,120)); //set the place of the headerPanel
-		
-		 //create a searchBar Panel
-		searchBar.removeAll();
-		searchBar.setLayout(new FlowLayout());
-		searchBar.add(textfield); // add the textField to the middle Panel
-		searchBar.add(bSearch); // add the Search button
-		searchBar.setBackground(Color.WHITE);//set Background color of the headerPanel
-			
 			
 		 // add a new Buttons Panel
 		ButtonList.removeAll();
-		ButtonList.setLayout(new FlowLayout()); // set a grid layout for the two buttons
+		ButtonList.setLayout(new FlowLayout(FlowLayout.CENTER,0,50)); // set a grid layout for the two buttons
 		ButtonList.add(ListingS); //add the button Listing S to the layout
 		ButtonList.setBackground(Color.WHITE);//set Background color of the headerPanel
 	
 		// add a new Buttons Panel
 		ButtonAdd.removeAll();
-		ButtonAdd.setLayout(new FlowLayout()); // set a grid layout for the two buttons
+		ButtonAdd.setLayout(new FlowLayout(FlowLayout.CENTER,0,20)); // set a grid layout for the two buttons
 		ButtonAdd.add(addS); //add the button addS to the layout
 		ButtonAdd.setBackground(Color.WHITE);//set Background color of the headerPanel
 		
@@ -117,7 +109,6 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		
 			
 		mainWindow.add(headerPanel); // add the header panel to the window
-		mainWindow.add(searchBar); // add the searchbar panel to the window
 		mainWindow.add(ButtonList); // add the Buttons panel to the window
 		mainWindow.add(ButtonAdd); // add the Buttons panel to the window
 		mainWindow.setResizable(false); // prevent this from being resize
