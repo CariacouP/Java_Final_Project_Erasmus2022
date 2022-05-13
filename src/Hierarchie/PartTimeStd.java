@@ -1,5 +1,7 @@
 package Hierarchie;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -27,6 +29,7 @@ public class PartTimeStd extends Student{
 	boolean submitPart=false;
 	
 	
+	static JPanel PTitlePartTimeStd = new JPanel();
 	static JPanel PLevelOfStudie = new JPanel();
 	static JPanel PNumberOfHours = new JPanel();
 	static JPanel PMajor = new JPanel();
@@ -34,7 +37,7 @@ public class PartTimeStd extends Student{
 	static JPanel PMinor2 = new JPanel();
 	static JPanel PReferalProf = new JPanel();
 	static JPanel PavgGrade = new JPanel();
-	static JPanel PanelPartTimeStudent = new JPanel();
+	//static JPanel PanelPartTimeStudent = new JPanel();
 	static JPanel PButtonSubmit=new JPanel();
 	
 	JTextField tf_number_of_Hours;
@@ -199,8 +202,9 @@ public class PartTimeStd extends Student{
 		framePartTimeTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
 		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
 		framePartTimeTStd.setIconImage(icon); // replace the standard icon of the window
-		framePartTimeTStd.setLayout(new GridLayout(0,2));
+		framePartTimeTStd.setLayout(new GridLayout(9,1));
 		
+		PTitlePartTimeStd.removeAll();
 		PLevelOfStudie.removeAll();
 		PMajor.removeAll();
 		PMinor1.removeAll();
@@ -212,7 +216,9 @@ public class PartTimeStd extends Student{
 
 		
 		
-		
+		PTitlePartTimeStd.add(new JLabel("Complete Part time student information"));
+		PTitlePartTimeStd.add( new JLabel());
+		PTitlePartTimeStd.setBackground(Color.WHITE);
 		
 		cb_level= new JComboBox<String>();
 		cb_level.addItem("1");
@@ -224,42 +230,55 @@ public class PartTimeStd extends Student{
 		cb_level.addItem("7");
 		cb_level.addItem("8");
 		
-		PLevelOfStudie.add(new JLabel("year of Studie : "));
+		PLevelOfStudie.add(new JLabel("Year of Study :     "));
 		PLevelOfStudie.add(cb_level);
+		PLevelOfStudie.setBackground(Color.WHITE);
 		
-		PNumberOfHours.add(new JLabel("Number of Hours : "));
+		PNumberOfHours.add(new JLabel("Number of hours : "));
 		PNumberOfHours.add(tf_number_of_Hours=new JTextField(10));
+		PNumberOfHours.setBackground(Color.WHITE);
 		
-		PMajor.add(new JLabel("Major : "));
-		PMajor.add(tf_Major=new JTextField(10));
+		PMajor.add(new JLabel("Major :"));
+		PMajor.add(tf_Major=new JTextField(16));
+		PMajor.setBackground(Color.WHITE);
 		
 		PMinor1.add(new JLabel("Minor 1 : "));
-		PMinor1.add(tf_Minor1=new JTextField(10));
+		PMinor1.add(tf_Minor1=new JTextField(15));
+		PMinor1.setBackground(Color.WHITE);
 		
 		PMinor2.add(new JLabel("Minor 2 : "));
-		PMinor2.add(tf_Minor2=new JTextField(10));
+		PMinor2.add(tf_Minor2=new JTextField(15));
+		PMinor2.setBackground(Color.WHITE);
 		
-		PReferalProf.add(new JLabel("Refferal Prof : "));
-		PReferalProf.add(tf_ReferalProf=new JTextField(10));
+		PReferalProf.add(new JLabel("Refferal Prof :  "));
+		PReferalProf.add(tf_ReferalProf=new JTextField(12));
+		PReferalProf.setBackground(Color.WHITE);
 		
-		PavgGrade.add(new JLabel("Average Grade"));
-		PavgGrade.add(tf_AvgGrade=new JTextField(10));
+		PavgGrade.add(new JLabel("Average Grade :  "));
+		PavgGrade.add(tf_AvgGrade=new JTextField(11));
+		PavgGrade.setBackground(Color.WHITE);
 		
 		bn_addSubmit = new JButton("Submit");
+		bn_addSubmit.setForeground(Color.WHITE);
+		bn_addSubmit.setBackground(new Color(66,133,244));
+		bn_addSubmit.setPreferredSize(new Dimension(224,20));
+		PButtonSubmit.setBackground(Color.WHITE);
 		PButtonSubmit.add(bn_addSubmit);
 		
 		
-		PanelPartTimeStudent.add(PNumberOfHours);
-		PanelPartTimeStudent.add(PLevelOfStudie);
-		PanelPartTimeStudent.add(PMajor);
-		PanelPartTimeStudent.add(PMinor1);
-		PanelPartTimeStudent.add(PMinor2);
-		PanelPartTimeStudent.add(PReferalProf);
-		PanelPartTimeStudent.add(PavgGrade);
-		PanelPartTimeStudent.add(PButtonSubmit);
+		framePartTimeTStd.add(PTitlePartTimeStd);
+		framePartTimeTStd.add(PLevelOfStudie);
+		framePartTimeTStd.add(PNumberOfHours);
+		framePartTimeTStd.add(PMajor);
+		framePartTimeTStd.add(PMinor1);
+		framePartTimeTStd.add(PMinor2);
+		framePartTimeTStd.add(PReferalProf);
+		framePartTimeTStd.add(PavgGrade);
+		framePartTimeTStd.add(PButtonSubmit);
 		
 		
 	}
+	
 	public void windowInputPartTimeStd(Student[] students,int i){
 		
 		
@@ -267,8 +286,9 @@ public class PartTimeStd extends Student{
 		//frameStd.remove(Student.PanelStudent);
 		
 		windowBUilder();
-		
-		framePartTimeTStd.add(PanelPartTimeStudent);
+		framePartTimeTStd.setResizable(false); // prevent this from being resize
+		framePartTimeTStd.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
+		framePartTimeTStd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		framePartTimeTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){

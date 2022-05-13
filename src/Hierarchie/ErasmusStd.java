@@ -1,5 +1,7 @@
 package Hierarchie;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -28,6 +30,7 @@ public class ErasmusStd extends Student
 	String CountryOfOrigin;
 	boolean submitErasmus=false;
 	
+	static JPanel PTitleErasmusStd = new JPanel();
 	static JPanel PLevelOfStudie = new JPanel();
 	static JPanel PMajor = new JPanel();
 	static JPanel PMinor1 = new JPanel();
@@ -257,9 +260,24 @@ public class ErasmusStd extends Student
 		frameErasmusTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
 		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
 		frameErasmusTStd.setIconImage(icon); // replace the standard icon of the window
-		frameErasmusTStd.setLayout(new GridLayout(0,2));
+		frameErasmusTStd.setLayout(new GridLayout(16,1));
 		
-
+		PTitleErasmusStd.removeAll();
+		PNumber.removeAll();
+		PStreet.removeAll();
+		PTown.removeAll();
+		PZipCode.removeAll();
+		PCountry.removeAll();
+		PAdress.removeAll();
+		PLevelOfStudie.removeAll();
+		PMajor.removeAll();
+		PMinor1.removeAll();
+		PMinor2.removeAll();
+		PReferalProf.removeAll();
+		PavgGrade.removeAll();
+		PUnivversityOfOrigin.removeAll();
+		PCountryOfOrigin.removeAll();
+		PButtonSubmit.removeAll();
 		
 		cb_level= new JComboBox<String>();
 		cb_level.addItem("1");
@@ -271,90 +289,91 @@ public class ErasmusStd extends Student
 		cb_level.addItem("7");
 		cb_level.addItem("8");
 		
-		//PNumber.setLayout(new GridLayout(6,1));
-		PNumber.removeAll();
-		PNumber.add(new JLabel("Number :"));			
-		PNumber.add(tf_Number=new JTextField(10));
+		PTitleErasmusStd.add(new JLabel("Complete Erasmus student information"));
+		PTitleErasmusStd.add(new JLabel());
+		PTitleErasmusStd.setBackground(Color.WHITE);
 		
-		//PStreet.setLayout(new GridLayout(6,2));
-		PStreet.removeAll();
-		PStreet.add(new JLabel("Street :"));			
-		PStreet.add(tf_Street=new JTextField(10));			
-		
-		//PTown.setLayout(new GridLayout(7,1));
-		PTown.removeAll();
-		PTown.add(new JLabel("Town :"));
-		PTown.add(tf_Town=new JTextField(10));
-		
-		//PZipCode.setLayout(new GridLayout(7,2))
-		PZipCode.removeAll();
-		PZipCode.add(new JLabel("Zip Code :"));
-		PZipCode.add(tf_ZipCode=new JTextField(10));
-		
-		//PCountry.setLayout(new GridLayout(7,3));
-		PCountry.removeAll();
-		PCountry.add(new JLabel("Country :"));
-		PCountry.add(tf_Country=new JTextField(10));
-		
-		PAdress.removeAll();
-		PAdress.add(new JLabel("Adress :"));
-		PAdress.add(PNumber);
-		PAdress.add(PStreet);
-		PAdress.add(PTown);
-		PAdress.add(PZipCode);
-		PAdress.add(PCountry);
-		
-		PLevelOfStudie.removeAll();
-		PLevelOfStudie.add(new JLabel("year of Studie : "));
+		PLevelOfStudie.add(new JLabel("Year of study : "));
 		PLevelOfStudie.add(cb_level);
+		PLevelOfStudie.setBackground(Color.WHITE);
 		
-		PMajor.removeAll();
 		PMajor.add(new JLabel("Major : "));
-		PMajor.add(tf_Major=new JTextField(10));
+		PMajor.add(tf_Major=new JTextField(16));
+		PMajor.setBackground(Color.WHITE);
 		
-		PMinor1.removeAll();
-		PMinor1.add(new JLabel("Minor 1 : "));
-		PMinor1.add(tf_Minor1=new JTextField(10));
+		PMinor1.add(new JLabel("Minor 1 :  "));
+		PMinor1.add(tf_Minor1=new JTextField(15));
+		PMinor1.setBackground(Color.WHITE);
 		
-		PMinor2.removeAll();
-		PMinor2.add(new JLabel("Minor 2 : "));
-		PMinor2.add(tf_Minor2=new JTextField(10));
+		PMinor2.add(new JLabel("Minor 2 :  "));
+		PMinor2.add(tf_Minor2=new JTextField(15));
+		PMinor2.setBackground(Color.WHITE);
 		
-		PReferalProf.removeAll();
-		PReferalProf.add(new JLabel("Refferal Prof : "));
-		PReferalProf.add(tf_ReferalProf=new JTextField(10));
+		PReferalProf.add(new JLabel("Refferal Prof :   "));
+		PReferalProf.add(tf_ReferalProf=new JTextField(12));
+		PReferalProf.setBackground(Color.WHITE);
 		
-		PavgGrade.removeAll();
-		PavgGrade.add(new JLabel("Average Grade"));
-		PavgGrade.add(tf_AvgGrade=new JTextField(10));
+		PavgGrade.add(new JLabel("Average Grade :   "));
+		PavgGrade.add(tf_AvgGrade=new JTextField(11));
+		PavgGrade.setBackground(Color.WHITE);
 		
-		PUnivversityOfOrigin.removeAll();
-		PUnivversityOfOrigin.add(new JLabel("University of origin: "));
-		PUnivversityOfOrigin.add(tf_University_Of_Origin=new JTextField(10));
+		PUnivversityOfOrigin.add(new JLabel("University of origin :   "));
+		PUnivversityOfOrigin.add(tf_University_Of_Origin=new JTextField(9));
+		PUnivversityOfOrigin.setBackground(Color.WHITE);
 		
-		PCountryOfOrigin.removeAll();
-		PCountryOfOrigin.add(new JLabel("Country of origin: "));
-		PCountryOfOrigin.add(tf_Country_Of_Origin=new JTextField(10));
+		PCountryOfOrigin.add(new JLabel("Country of origin :"));
+		PCountryOfOrigin.add(tf_Country_Of_Origin=new JTextField(11));
+		PCountryOfOrigin.setBackground(Color.WHITE);
+		
+		PAdress.add(new JLabel("School Adress :                                             "));
+		PAdress.add(new JLabel());
+		PAdress.setBackground(Color.WHITE);
+		
+		PNumber.add(new JLabel("Number : "));			
+		PNumber.add(tf_Number=new JTextField(15));
+		PNumber.setBackground(Color.WHITE);
+		
+		PStreet.add(new JLabel("Street :"));			
+		PStreet.add(tf_Street=new JTextField(16));	
+		PStreet.setBackground(Color.WHITE);
+		
+		PTown.add(new JLabel("Town : "));
+		PTown.add(tf_Town=new JTextField(16));
+		PTown.setBackground(Color.WHITE);
+		
+		PZipCode.add(new JLabel("Zip Code :  "));
+		PZipCode.add(tf_ZipCode=new JTextField(14));
+		PZipCode.setBackground(Color.WHITE);
+		
+		PCountry.add(new JLabel("Country :"));
+		PCountry.add(tf_Country=new JTextField(15));
+		PCountry.setBackground(Color.WHITE);
 		
 		bn_addSubmit = new JButton("Submit");
-		
-		PButtonSubmit.removeAll();
+		bn_addSubmit.setForeground(Color.WHITE);
+		bn_addSubmit.setBackground(new Color(66,133,244));
+		bn_addSubmit.setPreferredSize(new Dimension(224,20));
+		PButtonSubmit.setBackground(Color.WHITE);
 		PButtonSubmit.add(bn_addSubmit);
 		
 		
+		frameErasmusTStd.add(PTitleErasmusStd);
+		frameErasmusTStd.add(PLevelOfStudie);
+		frameErasmusTStd.add(PMajor);
+		frameErasmusTStd.add(PMinor1);
+		frameErasmusTStd.add(PMinor2);
+		frameErasmusTStd.add(PReferalProf);
+		frameErasmusTStd.add(PavgGrade);
+		frameErasmusTStd.add(PUnivversityOfOrigin);
+		frameErasmusTStd.add(PCountryOfOrigin);
 		
-		PanelErasmusTimeStudent.add(PLevelOfStudie);
-		PanelErasmusTimeStudent.add(PMajor);
-		PanelErasmusTimeStudent.add(PMinor1);
-		PanelErasmusTimeStudent.add(PMinor2);
-		PanelErasmusTimeStudent.add(PReferalProf);
-		PanelErasmusTimeStudent.add(PavgGrade);
-		PanelErasmusTimeStudent.add(PUnivversityOfOrigin);
-		PanelErasmusTimeStudent.add(PCountryOfOrigin);
-		
-		PanelErasmusTimeStudent.add(PAdress);
-		
-		PanelErasmusTimeStudent.add(PButtonSubmit);
+		frameErasmusTStd.add(PAdress);
+		frameErasmusTStd.add(PNumber);
+		frameErasmusTStd.add(PStreet);
+		frameErasmusTStd.add(PTown);
+		frameErasmusTStd.add(PZipCode);
+		frameErasmusTStd.add(PCountry);
+		frameErasmusTStd.add(PButtonSubmit);
 		
 		
 	}
@@ -362,9 +381,9 @@ public class ErasmusStd extends Student
 void windowInputErasmusStd(Student[] students, int i) {
 		
 		windowBUilder();
-		
-		
-		frameErasmusTStd.add(PanelErasmusTimeStudent);
+		frameErasmusTStd.setResizable(false); // prevent this from being resize
+		frameErasmusTStd.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
+		frameErasmusTStd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frameErasmusTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){

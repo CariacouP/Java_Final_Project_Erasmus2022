@@ -132,32 +132,32 @@ public class Student extends mainWindow{
 		frameStd.setLayout(new GridLayout(12,1));
 		
 		//PTitle.setLayout(new GridLayout(1,1));
-		PTitle.add(new JLabel("COMPLETE STUDENT INFORMATION          "));
+		PTitle.add(new JLabel("COMPLETE STUDENT INFORMATION        "));
 		PTitle.add( new JLabel());
 		PTitle.setBackground(Color.WHITE);
 		
 		//PName.setLayout(new GridLayout(2,1));
-		PName.add(new JLabel("Name :"));		
-		PName.add(tf_name=new JTextField(17));
+		PName.add(new JLabel("Name : "));		
+		PName.add(tf_name=new JTextField(16));
 		PName.setBackground(Color.WHITE);
 		
 		//PSurname.setLayout(new GridLayout(3,1));
-		PSurname.add(new JLabel("Surname :"));			
-		PSurname.add(tf_Surname=new JTextField(15));
+		PSurname.add(new JLabel("Surname :  "));			
+		PSurname.add(tf_Surname=new JTextField(14));
 		PSurname.setBackground(Color.WHITE);
 		
 		//PField_Of_Studie.setLayout(new GridLayout(4,1));
-		PField_Of_Studie.add(new JLabel("Field of studies :"));			
-		PField_Of_Studie.add(tf_Field_of_Studie=new JTextField(12));
+		PField_Of_Studie.add(new JLabel("Field of studies :  "));			
+		PField_Of_Studie.add(tf_Field_of_Studie=new JTextField(11));
 		PField_Of_Studie.setBackground(Color.WHITE);
 		
 		//PAdress.setLayout(new GridLayout(5,1));
-		PAdress.add(new JLabel("Enter student adress                                   "));
+		PAdress.add(new JLabel("Enter student adress                                  "));
 		PAdress.add(new JLabel());
 		PAdress.setBackground(Color.WHITE);
 		
 		//PNumber.setLayout(new GridLayout(6,1));
-		PNumber.add(new JLabel("Number : "));
+		PNumber.add(new JLabel("Number :"));
 		PNumber.add(tf_Number=new JTextField(15));
 		PNumber.setBackground(Color.WHITE);
 		
@@ -182,7 +182,7 @@ public class Student extends mainWindow{
 		PCountry.setBackground(Color.WHITE);
 		
 		//PTypeStd.setLayout(new GridLayout(8,1));
-		PTypeStd.add(new JLabel("Type student :      "));
+		PTypeStd.add(new JLabel("Type student :     "));
 		PTypeStd.setBackground(Color.WHITE);
 		
 		cb_Type_Studie = new JComboBox<String>();
