@@ -250,7 +250,14 @@ public class ErasmusStd extends Student
 				"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade +" Local Adress : "+localAdresse + 
 				"University of Origin : " +UnivversityOfOrigin+ "Country of Origin : "+ CountryOfOrigin ;
 	}
-	
+	@Override
+	public String[] toArrayString() {
+		String[] arrayString= {Integer.toString(id_Student), name, Surname,Field_Of_Studie,Adresse.number, Adresse.street, 
+				Adresse.town, Adresse.zipCode, Adresse.Country,typeOfStudie,Integer.toString(levelOfStudie),Major,Minor1,
+				Minor2,ReferalProf,Float.toString(avgGrade),"",localAdresse.number, localAdresse.street, localAdresse.town, 
+				localAdresse.zipCode, localAdresse.Country,UnivversityOfOrigin,CountryOfOrigin};
+		return arrayString;
+	}
 	@Override
 	void windowBUilder() {
 		

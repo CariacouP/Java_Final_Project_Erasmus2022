@@ -107,10 +107,15 @@ public class Student extends mainWindow{
 	}
 	
 	public String toString() {
-		return "id : "+ id_Student+"name: "+name+" Surname : " +Surname + " Field of Studies: "+ Field_Of_Studie+" Adresse : "+ Adresse.toString() +" tyoe of Studies : "+ typeOfStudie;
+		return "id : "+ id_Student+"name: "+name+" Surname : " +Surname + " Field of Studies: "+ Field_Of_Studie+" Adresse : "+ Adresse.toString() +" type of Studies : "+ typeOfStudie;
 	}
 	
-	void windowBUilder() {
+	public String[] toArrayString() {
+		String[] arrayString= {Integer.toString(id_Student), name, Surname,Field_Of_Studie,Adresse.number, Adresse.street, Adresse.town, Adresse.zipCode, Adresse.Country,typeOfStudie};
+		return arrayString;
+	}
+	
+ 	void windowBUilder() {
 		PTitle.removeAll();
 		PName.removeAll();
 		PSurname.removeAll();

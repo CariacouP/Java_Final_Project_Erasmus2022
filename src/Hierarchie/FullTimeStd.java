@@ -159,6 +159,15 @@ public class FullTimeStd extends Student {
 				" Level od Studie"+ this.levelOfStudie + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
+	
+	@Override
+	public String[] toArrayString() {
+		String[] arrayString= {Integer.toString(id_Student), name, Surname,Field_Of_Studie,Adresse.number, 
+				Adresse.street, Adresse.town, Adresse.zipCode, Adresse.Country,typeOfStudie,
+				Integer.toString(levelOfStudie),Major,Minor1,Minor2,ReferalProf,Float.toString(avgGrade)};
+		return arrayString;
+	}
+	
 	@Override
 	void windowBUilder() {
 		frameFullTStd.setTitle("Student"); // set the title of the window

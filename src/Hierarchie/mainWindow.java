@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.*;
+import java.util.Arrays;
 import java.util.EventObject;
 
 import javax.swing.table.DefaultTableModel;
@@ -151,17 +152,8 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		
 		//JButton bn_giveInformation =new JButton("more information here");
 		
-		
-	
-		
-		
-		
 		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student","More Information"};
-		/*
-		Object[][] data = {{0,"Luca","Bankofski","Computer science","Full Time Student"},
-				 			{1,"Alexis","Marie","Computer science","Full Time Student"},
-		 					{2,"Geraud","Cazenave","Marine","Part time Stude,t"}};
-		 */
+		
 		 
 		 Object[][] data = new Object [i][6];
 		 
@@ -172,14 +164,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 			data[j][2]=studentList[j].Surname;
 			data[j][3]=studentList[j].Field_Of_Studie;
 			data[j][4]=studentList[j].typeOfStudie;
-			/*
-			data[j][5]=new JButton("more information here");
-			((AbstractButton) data[j][5]).addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					studentList[j].informationFrame();
-					
-				}
-			});*/
+			
 		 }
 		 
 		 
@@ -203,8 +188,105 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		
 		
 	}
-
 	
+	public int[] searchInStudent(Student[] students,int fieldOfSearch,String fieldSearched) {
+		
+		/*
+		 * Explcation des Fields :
+		 *  0 : Integer.toString(id_Student)
+		 *  1: name, 
+		 *  3 : Surname,
+		 * 	4: Field_Of_Studie,
+		 *  5 : Adresse.number, 
+		 *  6 : Adresse.street, 
+		 *  7: Adresse.town, 
+		 *  8: Adresse.zipCode, 
+		 *  9: Adresse.Country,
+		 *  10: typeOfStudie,
+		 *  11: Integer.toString(levelOfStudie),
+		 *  12 : Major,
+		 *  13 : Minor1,
+		 *  14: Minor2,
+		 *  15 : ReferalProf,
+		 *  16: Float.toString(avgGrade),
+		 *  17: Integer.toString(NumberOfHours)
+		 *  18 : localAdresse.number, 
+		 *  19 : localAdresse.street, 
+		 *  20 : localAdresse.town, 
+			21 : localAdresse.zipCode, 
+			22 : localAdresse.Country,
+			23 : UnivversityOfOrigin,
+			24 : CountryOfOrigin
+		
+		 */
+		 
+		String[] studentFieldChoosenArray = new String[100];
+		for (int k=0;k<students.length;k++) {
+			studentFieldChoosenArray[k]=students[k].toArrayString()[fieldOfSearch];
+             
+		}
+		
+		return searchAll(studentFieldChoosenArray,fieldSearched);
+		
+	}
+	
+	
+	public int[] searchAll(String[] listToSearch, String fieldSearched) {
+		int[] listOfIndexFound = new int[100];
+		int a=0;
+		int l=0;
+		while( a != listToSearch.length) {
+			listOfIndexFound[l]=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,listToSearch.length),fieldSearched);
+			l++;
+			a=listOfIndexFound[l]+1;
+			
+		}
+		
+		
+		
+		return listOfIndexFound;
+	}
+	
+	
+	public void showFoundedStudent(int[] listOfIdFound,Student[] studentList) {
+		
+		int n=listOfIdFound.length;
+		Student[] ListOfStudentFounded =new Student[n];
+		
+		for (int l=0;l<n;l++) {
+			ListOfStudentFounded[l]=studentList[ listOfIdFound[l] ];
+		}
+		
+		JFrame FrameList = new JFrame();
+		FrameList.setTitle("Student"); // set the title of the window
+		FrameList.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		FrameList.setLocationRelativeTo(null);
+		
+		//JButton bn_giveInformation =new JButton("more information here");
+		
+		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student"};
+		
+		 
+		 Object[][] data = new Object [n][5];
+		 
+		 
+		 for (j = 0; j<n;j++) {
+			data[j][0]= ListOfStudentFounded[j].id_Student;
+			data[j][1]=ListOfStudentFounded[j].name;
+			data[j][2]=ListOfStudentFounded[j].Surname;
+			data[j][3]=ListOfStudentFounded[j].Field_Of_Studie;
+			data[j][4]=ListOfStudentFounded[j].typeOfStudie;
+			System.out.println(ListOfStudentFounded[j].toString());
+			
+		 }
+		 DefaultTableModel model= new DefaultTableModel(data, title);
+		 
+		JTable Table = new JTable(model);
+		Table.setRowHeight(50);
+	
+		FrameList.getContentPane().add(new JScrollPane(Table));
+		FrameList.setVisible(true);
+	}
 }
 
 
