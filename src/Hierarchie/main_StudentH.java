@@ -7,8 +7,6 @@ public class main_StudentH {
 	 * 
 	 */
 	
-	
-	
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
@@ -18,18 +16,7 @@ public class main_StudentH {
 		int i=0;
 		Student[] students= new Student[100];
 		newWindow.mainWindowBuilder(students,i);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 	}
-	
-	
 }
 

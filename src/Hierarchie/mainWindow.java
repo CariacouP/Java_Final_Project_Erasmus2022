@@ -16,7 +16,7 @@ import javax.swing.table.TableCellRenderer;
 
 public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implements ActionListener*/{
 	
-	//JButton bSearch;
+	JButton bSearch;
 	JButton ListingS;
 	JButton addS;
 	JTextField textfield;
@@ -27,7 +27,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 	
 	static JPanel ButtonAdd = new JPanel();
 	static JPanel ButtonList = new JPanel();
-	//static JPanel searchBar = new JPanel();
+	static JPanel searchBar = new JPanel();
 	static JPanel headerPanel = new JPanel();
 	int j = 0;
 	mainWindow(){
@@ -50,13 +50,25 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		ImageIcon image = new ImageIcon("ressources/Logo Student.png"); // add an image to the label
 		label.setIcon(image);// set the image on the label
 		
-		textfield = new JTextField("Enter student's name and surname...", 20); //set a TextField
-		/*
+		textfield = new JTextField("Enter student's name", 20); //set a TextField
+		textfield.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		bSearch = new JButton("Search"); //set a button
 		//bSearch.addActionListener(this); //add an actionListener when the button is pressed
 		bSearch.setForeground(Color.WHITE); //change the color of the text
 		bSearch.setBackground(new Color(155,155,155)); //change the color of the background
-		*/
+		bSearch.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		
 		ListingS = new JButton();
 		ListingS.setText("List students");
 		ListingS.setForeground(Color.WHITE);
