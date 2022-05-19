@@ -172,14 +172,9 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		 
 		JTable Table = new JTable(model);
 		Table.setRowHeight(50);
-		
-		
-		
-		FrameList.getContentPane().add(new JScrollPane(Table));
-		 
-		
 
-		
+		FrameList.getContentPane().add(new JScrollPane(Table));
+
 		FrameList.setVisible(true);
 		
 		
