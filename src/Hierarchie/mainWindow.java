@@ -51,12 +51,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		label.setIcon(image);// set the image on the label
 		
 		textfield = new JTextField("Enter student's name and surname...", 20); //set a TextField
-		/*
-		bSearch = new JButton("Search"); //set a button
-		//bSearch.addActionListener(this); //add an actionListener when the button is pressed
-		bSearch.setForeground(Color.WHITE); //change the color of the text
-		bSearch.setBackground(new Color(155,155,155)); //change the color of the background
-		*/
+		
 		ListingS = new JButton();
 		ListingS.setText("List students");
 		ListingS.setForeground(Color.WHITE);

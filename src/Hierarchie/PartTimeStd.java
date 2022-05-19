@@ -359,13 +359,20 @@ public class PartTimeStd extends Student{
 				avgGrade=avgGradeGiven;
 				
 				
-				submitPart=true;
-				students[i]= new PartTimeStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
-						 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
-		
-				mainWindowBuilder(students,i+1);
-				framePartTimeTStd.dispose();
+
 				
+				if (!name.equals("")) {
+					students[i]= new PartTimeStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
+							 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
+					mainWindowBuilder(students,i+1);
+					framePartTimeTStd.dispose();
+					
+				}
+				else {
+					mainWindowBuilder(students,i);
+					framePartTimeTStd.dispose();
+				
+				}
 				
 			}
 		});	
