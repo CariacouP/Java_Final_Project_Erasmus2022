@@ -68,7 +68,6 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 			}
 		});
 		
-		
 		ListingS = new JButton();
 		ListingS.setText("List students");
 		ListingS.setForeground(Color.WHITE);

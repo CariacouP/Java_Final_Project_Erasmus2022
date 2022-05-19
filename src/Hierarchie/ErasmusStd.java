@@ -476,16 +476,20 @@ void windowInputErasmusStd(Student[] students, int i) {
 				
 				
 				
+							
+				if (!name.equals("")) {
+					students[i]= new ErasmusStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
+							 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade,localAdresse,UnivversityOfOrigin,CountryOfOrigin);
+					mainWindowBuilder(students,i+1);
+					frameErasmusTStd.dispose();
+					
+				}
+				else {
+					mainWindowBuilder(students,i);
+					frameErasmusTStd.dispose();
+				}
 				
-				students[i]= new ErasmusStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
-						 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade,localAdresse,UnivversityOfOrigin,CountryOfOrigin);
-				
-				
-				
-				
-				mainWindowBuilder(students,i+1);
-				frameErasmusTStd.dispose();
-				
+
 				
 			}
 		});

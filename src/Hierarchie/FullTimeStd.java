@@ -313,15 +313,20 @@ public class FullTimeStd extends Student {
 		
 				
 				submitFull=true;
-				students[i]= new FullTimeStd( name,  Surname,  Field_Of_Studie,typeOfStudie, Adresse,  i,
-						 levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
-				
-				mainWindowBuilder(students,i+1);
-				frameFullTStd.dispose();
 				
 				
+				if (!name.equals("")) {
+					students[i]= new FullTimeStd( name,  Surname,  Field_Of_Studie,typeOfStudie, Adresse,  i,
+							 levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
+					mainWindowBuilder(students,i+1);
+					frameFullTStd.dispose();
+					
+				}
+				else {
+					mainWindowBuilder(students,i);
+					frameFullTStd.dispose();
 				
-				
+				}
 				
 			}
 		});	
