@@ -1,6 +1,5 @@
 package Hierarchie;
 
-
 public class main_StudentH {
 
 	/**
