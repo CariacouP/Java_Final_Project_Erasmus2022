@@ -13,7 +13,7 @@ public class main_StudentH {
 			
 		mainWindow newWindow= new mainWindow();
 		int i=0;
-		Student[] students= new Student[100];
+		Student[] students = new Student[100];
 		newWindow.mainWindowBuilder(students,i);
 			
 	}

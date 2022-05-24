@@ -2,6 +2,7 @@ package Hierarchie;
 
 import javax.swing.*;
 import javax.swing.event.CellEditorListener;
+import java.util.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -101,87 +102,87 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 				
 				if(Field_of_Search_Given=="Name") {
 					nameGiven=textfield.getText();
-					showFoundedStudent(searchInStudent(students,1,nameGiven,i),students);
+					showFoundedStudent(searchInStudent(students,1,nameGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Surname") {
 					surnameGiven=textfield.getText();
-					searchInStudent(students,2,surnameGiven,i);
+					showFoundedStudent(searchInStudent(students,2,surnameGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Field of study") {
 					Field_of_Study_Given=textfield.getText();
-					searchInStudent(students,3,Field_of_Study_Given,i);
+					showFoundedStudent(searchInStudent(students,3,Field_of_Study_Given,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Adress town") {
 					adressTownGiven=textfield.getText();
-					searchInStudent(students,7,adressTownGiven,i);
+					showFoundedStudent(searchInStudent(students,7,adressTownGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Adress country") {
 					adressCountryGiven=textfield.getText();
-					searchInStudent(students,9,adressCountryGiven,i);
+					showFoundedStudent(searchInStudent(students,9,adressCountryGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Type of study") {
 					type_of_Study_Given=textfield.getText();
-					searchInStudent(students,10,type_of_Study_Given,i);
+					showFoundedStudent(searchInStudent(students,10,type_of_Study_Given,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Level of study") {
 					level_of_Study_Given=Integer.parseInt(textfield.getText());
-					searchInStudent(students,11,Integer.toString(level_of_Study_Given),i);
+					showFoundedStudent(searchInStudent(students,11,Integer.toString(level_of_Study_Given),i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Major") {
 					majorGiven=textfield.getText();
-					searchInStudent(students,12,majorGiven,i);
+					showFoundedStudent(searchInStudent(students,12,majorGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Minor 1") {
 					minor1Given=textfield.getText();
-					searchInStudent(students,13,minor1Given,i);
+					showFoundedStudent(searchInStudent(students,13,minor1Given,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Minor 2") {
 					minor2Given=textfield.getText();
-					searchInStudent(students,14,minor2Given,i);
+					showFoundedStudent(searchInStudent(students,14,minor2Given,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Referral professor") {
 					referalProfGiven=textfield.getText();
-					searchInStudent(students,15,referalProfGiven,i);
+					showFoundedStudent(searchInStudent(students,15,referalProfGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Average grade") {
 					avgGradeGiven=Float.valueOf(textfield.getText());
-					searchInStudent(students,16,Float.toString(avgGradeGiven),i);
+					showFoundedStudent(searchInStudent(students,16,Float.toString(avgGradeGiven),i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Number of hours") {
 					nb_of_Hours_Given=Integer.parseInt(textfield.getText());
-					searchInStudent(students,17,Integer.toString(nb_of_Hours_Given),i);
+					showFoundedStudent(searchInStudent(students,17,Integer.toString(nb_of_Hours_Given),i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="School Adress town") {
 					schoolTownGiven=textfield.getText();
-					searchInStudent(students,20,schoolTownGiven,i);
+					showFoundedStudent(searchInStudent(students,20,schoolTownGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="School Adress country") {
 					schoolCountryGiven=textfield.getText();
-					searchInStudent(students,22,schoolCountryGiven,i);
+					showFoundedStudent(searchInStudent(students,22,schoolCountryGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="University of origin") {
 					universityGiven=textfield.getText();
-					searchInStudent(students,23,universityGiven,i);
+					showFoundedStudent(searchInStudent(students,23,universityGiven,i),students,i);
 				}
 				
 				else if(Field_of_Search_Given=="Country of origin") {
 					country_of_Origin_Given=textfield.getText();
-					searchInStudent(students,24,country_of_Origin_Given,i);
+					showFoundedStudent(searchInStudent(students,24,country_of_Origin_Given,i),students,i);
 				}
 				
 			}
@@ -194,7 +195,6 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		ListingS.setPreferredSize(new Dimension(378,20));
 		ListingS.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
 				listAll(students,i);
 				
 			}		
@@ -343,39 +343,48 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		
 		 */
 		
-		System.out.println("test1");
 		String[] studentFieldChoosenArray = new String[100];
-		System.out.println("test2");
-		for (int k=0;k<i-1;k++) {
+		for (int k=0;k<i;k++) {
 			studentFieldChoosenArray[k]=students[k].toArrayString()[fieldOfSearch];
 		}
-		System.out.println("test3");
-		return searchAll(studentFieldChoosenArray,fieldSearched);
 		
+		return searchAll(studentFieldChoosenArray,fieldSearched,i);
 	}
 	
 	
-	public int[] searchAll(String[] listToSearch, String fieldSearched) {
+	public int[] searchAll(String[] listToSearch, String fieldSearched, int i) {
 		int[] listOfIndexFound = new int[100];
+		for(int merde=0;merde<100;merde++) {
+			listOfIndexFound[merde] = -1;
+		}
 		int a=0;
 		int l=0;
-		while( a != listToSearch.length) {
-			listOfIndexFound[l]=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,listToSearch.length),fieldSearched);
+		
+		//avant listosearch.length
+		while( a != i) {
+			listOfIndexFound[l]=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,i),fieldSearched);
 			l++;
-			a=listOfIndexFound[l]+1;
-			
+			a=listOfIndexFound[l-1]+1;
 		}
 		return listOfIndexFound;
 	}
 	
 	
-	public void showFoundedStudent(int[] listOfIdFound,Student[] studentList) {
+	public void showFoundedStudent(int[] listOfIdFound,Student[] studentList, int i) {
+		int n=0;
 		
-		int n=listOfIdFound.length;
+		for(int m=0;m<listOfIdFound.length;m++) {
+			if(listOfIdFound[m] !=  -1) {
+				n++;
+			}
+		}
+		
+		//System.out.println("+ "+n);
+		
 		Student[] ListOfStudentFounded =new Student[n];
 		
-		for (int l=0;l<n;l++) {
-			ListOfStudentFounded[l]=studentList[ listOfIdFound[l] ];
+		for (int p=0;p<n;p++) {
+			ListOfStudentFounded[p]=studentList[ listOfIdFound[p] ];
 		}
 		
 		JFrame FrameList = new JFrame();
@@ -384,7 +393,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
 		FrameList.setIconImage(icon); // replace the standard icon of the window
 		FrameList.setLocationRelativeTo(null);
-		
+		System.out.println("z");
 		//JButton bn_giveInformation =new JButton("more information here");
 		
 		String  title[] = {"Id","Name", "Surmame","Field of studie","Type of student"};
