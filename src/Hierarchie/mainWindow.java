@@ -354,36 +354,63 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 	
 	public int[] searchAll(String[] listToSearch, String fieldSearched, int i) {
 		int[] listOfIndexFound = new int[100];
+		
 		for(int merde=0;merde<100;merde++) {
 			listOfIndexFound[merde] = -1;
 		}
+		
 		int a=0;
 		int l=0;
 		
 		//avant listosearch.length
-		while( a != i) {
-			listOfIndexFound[l]=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,i),fieldSearched);
-			l++;
-			a=listOfIndexFound[l-1]+1;
+		while( a < i && l<100) {
+			int found=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,i),fieldSearched);
+			System.out.println(found);
+			if (found!=-1){
+				if(l==0) {
+					listOfIndexFound[l]=found;
+					l++;
+					a=listOfIndexFound[l-1]+1;
+				}
+				else {
+					listOfIndexFound[l]=found+listOfIndexFound[l-1];
+					l++;
+					a=listOfIndexFound[l-1]+1;
+				}
+			}
+			//else{
+				l++;
+			//}
 		}
+		
+		System.out.println("++"+listOfIndexFound[0]);
+		
+		
 		return listOfIndexFound;
 	}
 	
 	
 	public void showFoundedStudent(int[] listOfIdFound,Student[] studentList, int i) {
 		int n=0;
+		System.out.println("1."+listOfIdFound[0]);
 		
 		for(int m=0;m<listOfIdFound.length;m++) {
 			if(listOfIdFound[m] !=  -1) {
+				
+				//System.out.println("boucle n :"+listOfIdFound[m]);
 				n++;
 			}
 		}
+		System.out.println(listOfIdFound[0]);
+		System.out.println(listOfIdFound[1]);
 		
 		//System.out.println("+ "+n);
 		
 		Student[] ListOfStudentFounded =new Student[n];
+		System.out.println("n:"+n);
 		
-		for (int p=0;p<n;p++) {
+		for(int p=0;p<n;p++) {
+			//System.out.println("2."+listOfIdFound[p]);
 			ListOfStudentFounded[p]=studentList[ listOfIdFound[p] ];
 		}
 		
