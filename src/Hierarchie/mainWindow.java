@@ -355,15 +355,24 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 	public int[] searchAll(String[] listToSearch, String fieldSearched, int i) {
 		int[] listOfIndexFound = new int[100];
 		
-		for(int merde=0;merde<100;merde++) {
-			listOfIndexFound[merde] = -1;
+		for(int k=0;k<100;k++) {
+			listOfIndexFound[k] = -1;
 		}
 		
 		int a=0;
-		int l=0;
+		//int l=0;
+		
+		for (int l=0; l<i;l++) {
+			
+			if(listToSearch[l].equals(fieldSearched)){
+				listOfIndexFound[a]=l;
+				a++;
+			}
+		}
+		
 		
 		//avant listosearch.length
-		while( a < i && l<100) {
+		/*while( a < i && l<100) {
 			int found=Arrays.binarySearch(Arrays.copyOfRange(listToSearch, a,i),fieldSearched);
 			System.out.println(found);
 			if (found!=-1){
@@ -381,7 +390,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 			//else{
 				l++;
 			//}
-		}
+		}*/
 		
 		System.out.println("++"+listOfIndexFound[0]);
 		
