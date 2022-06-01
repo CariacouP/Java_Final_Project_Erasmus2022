@@ -196,7 +196,26 @@ public class PartTimeStd extends Student{
 	
 	@Override
 	public String[] toArrayString() {
-		String[] arrayString= {Integer.toString(id_Student), name, Surname,Field_Of_Studie,Adresse.number, Adresse.street, Adresse.town, Adresse.zipCode, Adresse.Country,typeOfStudie,Integer.toString(levelOfStudie),Major,Minor1,Minor2,ReferalProf,Float.toString(avgGrade),Integer.toString(NumberOfHours)};
+		
+		String[] arrayString =  new String[25];
+		arrayString[0]=Integer.toString(id_Student);
+		arrayString[1]= name;
+		arrayString[2]=Surname;
+		arrayString[3]=Field_Of_Studie;
+		arrayString[4]=Adresse.number;
+		arrayString[5]= Adresse.street;
+		arrayString[6]= Adresse.town;
+		arrayString[7]= Adresse.zipCode;
+		arrayString[8]=Adresse.Country;
+		arrayString[9]= typeOfStudie;
+		arrayString[10]= Integer.toString(levelOfStudie);
+		arrayString[11]= Major;
+		arrayString[12]= Minor1;
+		arrayString[13]= Minor2;
+		arrayString[14]= ReferalProf;
+		arrayString[15]= Float.toString(avgGrade);
+		arrayString[16]= Integer.toString(NumberOfHours);
+		
 		return arrayString;
 	}
 
@@ -380,33 +399,5 @@ public class PartTimeStd extends Student{
 		
 		
 	}
-	@Override
-	public void informationFrame() {
-		
-		JFrame informationFrame=new JFrame();
-		informationFrame.setTitle("Student"); // set the title of the window
-		informationFrame.setSize(960,540);
-		informationFrame.setLayout(new GridLayout(0,2));
-		
-		
-		informationFrame.add(new JLabel("Id : "+id_Student));
-		informationFrame.add(new JLabel("Name : "+name));
-		informationFrame.add(new JLabel("Surname : "+ Surname));
-		informationFrame.add(new JLabel("Field of Studies : "+Field_Of_Studie));
-		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
-		informationFrame.add(new JLabel("Adresse : " +Adresse.toString()));
-		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
-		
-		informationFrame.add(new JLabel("YNumber of hour per week : "+NumberOfHours));
-		informationFrame.add(new JLabel("Year of Study : "+levelOfStudie));
-		informationFrame.add(new JLabel("Major : "+ Major));
-		informationFrame.add(new JLabel("First Minor : "+Minor1));
-		informationFrame.add(new JLabel("Second Minor : "+Minor2));
-		informationFrame.add(new JLabel("Second Minor : "+Minor2));
-		informationFrame.add(new JLabel("Referal Teacher : "+ReferalProf));
-		informationFrame.add(new JLabel("Average Grade : "+avgGrade));
-		
-		informationFrame.setVisible(true);
-		
-	}
+	
 }

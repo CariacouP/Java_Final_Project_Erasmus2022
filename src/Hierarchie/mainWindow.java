@@ -215,6 +215,7 @@ public class mainWindow /*implements TableCellRenderer,TableCellEditor/*implemen
 			}		
 		});
 		
+		
 		// create a headerPanel
 		headerPanel.removeAll();
 		headerPanel.setLayout(new FlowLayout());

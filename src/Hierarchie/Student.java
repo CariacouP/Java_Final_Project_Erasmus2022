@@ -111,7 +111,19 @@ public class Student extends mainWindow{
 	}
 	
 	public String[] toArrayString() {
-		String[] arrayString= {Integer.toString(id_Student), name, Surname,Field_Of_Studie,Adresse.number, Adresse.street, Adresse.town, Adresse.zipCode, Adresse.Country,typeOfStudie};
+		String[] arrayString =  new String[25];
+		arrayString[0]=Integer.toString(id_Student);
+		arrayString[1]= name;
+		arrayString[2]=Surname;
+		arrayString[3]=Field_Of_Studie;
+		arrayString[4]=Adresse.number;
+		arrayString[5]= Adresse.street;
+		arrayString[6]= Adresse.town;
+		arrayString[7]= Adresse.zipCode;
+		arrayString[8]=Adresse.Country;
+		arrayString[9]= typeOfStudie;
+		
+		
 		return arrayString;
 	}
 	
@@ -254,19 +266,12 @@ public class Student extends mainWindow{
 				
 				
 				if (typeOfStudie=="Full time student") {
-					//this.removeAll();
+				
 					
 					FullTimeStd newFullStd= new FullTimeStd(name,Surname,Field_Of_Studie,typeOfStudie,Adresse,i);
 					frameStd.dispose();		
 					newFullStd.windowInputFullTimeStd(students,i);
-					
-					
-					
-					
-					//submit=true;		
-					
-					
-					
+
 				}
 						
 				else if (typeOfStudie=="Part time Student") {
@@ -296,25 +301,5 @@ public class Student extends mainWindow{
 		
 		
 	}
-public void informationFrame() {
-		
-		JFrame informationFrame=new JFrame();
-		informationFrame.setTitle("Student"); // set the title of the window
-		informationFrame.setSize(960,540);
-		informationFrame.setLayout(new GridLayout(0,2));
-		
-		
-		informationFrame.add(new JLabel("Id : "+id_Student));
-		informationFrame.add(new JLabel("Name : "+name));
-		informationFrame.add(new JLabel("Surname : "+ Surname));
-		informationFrame.add(new JLabel("Field of Studies : "+Field_Of_Studie));
-		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
-		informationFrame.add(new JLabel("Adresse : " +Adresse.toString()));
-		informationFrame.add(new JLabel("Type of Studies : "+typeOfStudie));
-		
-		
-		
-		informationFrame.setVisible(true);
-		
-	}
+
 }
