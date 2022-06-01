@@ -1,16 +1,24 @@
 package Hierarchie;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PartTimeStd extends Student{
+	
+	
+	JFrame framePartTimeTStd =new JFrame();
 	int NumberOfHours;
 	int levelOfStudie;
 	String Major;
@@ -21,6 +29,7 @@ public class PartTimeStd extends Student{
 	boolean submitPart=false;
 	
 	
+	static JPanel PTitlePartTimeStd = new JPanel();
 	static JPanel PLevelOfStudie = new JPanel();
 	static JPanel PNumberOfHours = new JPanel();
 	static JPanel PMajor = new JPanel();
@@ -28,7 +37,7 @@ public class PartTimeStd extends Student{
 	static JPanel PMinor2 = new JPanel();
 	static JPanel PReferalProf = new JPanel();
 	static JPanel PavgGrade = new JPanel();
-	static JPanel PanelPartTimeStudent = new JPanel();
+	//static JPanel PanelPartTimeStudent = new JPanel();
 	static JPanel PButtonSubmit=new JPanel();
 	
 	JTextField tf_number_of_Hours;
@@ -48,7 +57,7 @@ public class PartTimeStd extends Student{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @param nameGiven
 	 * @param surnameGiven
@@ -56,9 +65,28 @@ public class PartTimeStd extends Student{
 	 * @param adresse
 	 * @param id_StudentGiven
 	 */
-	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven, Hierarchie.Adresse adresse,
+	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String typeOfStudie, Hierarchie.Adresse adresse,
 			int id_StudentGiven) {
-		super(nameGiven, surnameGiven, field_Of_StudieGiven, adresse, id_StudentGiven);
+		super(nameGiven, surnameGiven, field_Of_StudieGiven,typeOfStudie, adresse, id_StudentGiven);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param nameGiven
+	 * @param surnameGiven
+	 * @param field_Of_StudieGiven
+	 * @param adresse
+	 * @param id_StudentGiven
+	 * @param avgGrade2 
+	 * @param referalProf2 
+	 * @param minor22 
+	 * @param minor12 
+	 * @param major2 
+	 * @param levelOfStudie2 
+	 */
+	public PartTimeStd(String nameGiven, String surnameGiven, String field_Of_StudieGiven,String typeOfStudie, Hierarchie.Adresse adresse,
+			int id_StudentGiven, int levelOfStudie2, String major2, String minor12, String minor22, String referalProf2, float avgGrade2) {
+		super(nameGiven, surnameGiven, field_Of_StudieGiven,typeOfStudie, adresse, id_StudentGiven);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -162,20 +190,58 @@ public class PartTimeStd extends Student{
 
 	@Override
 	public String toString() {
-		return "name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
-				"Level of Studie : "+ this.levelOfStudie+" Number of hours "+ this.NumberOfHours + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
+		return "id : "+ id_Student+"name: "+this.name+" Surname : " +this.Surname + " Field of Studies: "+ this.Field_Of_Studie+" Adresse : "+ this.Adresse.toString()+ 
+				"Level of Studie : "+ this.levelOfStudie+" Number of hours : "+ this.NumberOfHours + " Major: "+ this.Major+ "Minor 1 :"+this.Minor1+" Minor 2 "+this.Minor2+"Referal professor : "+this.ReferalProf+ " Average Grade : "+this.avgGrade;
 	}
 	
-	
+	@Override
+	public String[] toArrayString() {
+		
+		String[] arrayString =  new String[25];
+		arrayString[0]=Integer.toString(id_Student);
+		arrayString[1]= name;
+		arrayString[2]=Surname;
+		arrayString[3]=Field_Of_Studie;
+		arrayString[4]=Adresse.number;
+		arrayString[5]= Adresse.street;
+		arrayString[6]= Adresse.town;
+		arrayString[7]= Adresse.zipCode;
+		arrayString[8]=Adresse.Country;
+		arrayString[9]= typeOfStudie;
+		arrayString[10]= Integer.toString(levelOfStudie);
+		arrayString[11]= Major;
+		arrayString[12]= Minor1;
+		arrayString[13]= Minor2;
+		arrayString[14]= ReferalProf;
+		arrayString[15]= Float.toString(avgGrade);
+		arrayString[16]= Integer.toString(NumberOfHours);
+		
+		return arrayString;
+	}
 
 	@Override
 	void windowBUilder() {
-		setSize(700,700);
-		setLayout(new GridLayout(0,2));
+		framePartTimeTStd.setTitle("Student"); // set the title of the window
+		framePartTimeTStd.setSize(960,540); //set the x-dimension and the y-dimension of the this
+		Image icon = Toolkit.getDefaultToolkit().getImage("ressources/Logo S.png"); // create an image icon
+		framePartTimeTStd.setIconImage(icon); // replace the standard icon of the window
+		framePartTimeTStd.setLayout(new GridLayout(9,1));
+		
+		PTitlePartTimeStd.removeAll();
+		PLevelOfStudie.removeAll();
+		PMajor.removeAll();
+		PMinor1.removeAll();
+		PMinor2.removeAll();
+		PReferalProf.removeAll();
+		PavgGrade.removeAll();
+		PButtonSubmit.removeAll();
+		PNumberOfHours.removeAll();
+
 		
 		
-		
-		
+		PTitlePartTimeStd.add(new JLabel("Complete Part time student information"));
+		PTitlePartTimeStd.add( new JLabel());
+		PTitlePartTimeStd.setBackground(Color.WHITE);
 		
 		cb_level= new JComboBox<String>();
 		cb_level.addItem("1");
@@ -187,52 +253,66 @@ public class PartTimeStd extends Student{
 		cb_level.addItem("7");
 		cb_level.addItem("8");
 		
-		PLevelOfStudie.add(new JLabel("year of Studie : "));
+		PLevelOfStudie.add(new JLabel("Year of Study :     "));
 		PLevelOfStudie.add(cb_level);
+		PLevelOfStudie.setBackground(Color.WHITE);
 		
-		PNumberOfHours.add(new JLabel("Number of Hours : "));
+		PNumberOfHours.add(new JLabel("Number of hours : "));
 		PNumberOfHours.add(tf_number_of_Hours=new JTextField(10));
+		PNumberOfHours.setBackground(Color.WHITE);
 		
-		PMajor.add(new JLabel("Major : "));
-		PMajor.add(tf_Major=new JTextField(10));
+		PMajor.add(new JLabel("Major :"));
+		PMajor.add(tf_Major=new JTextField(16));
+		PMajor.setBackground(Color.WHITE);
 		
 		PMinor1.add(new JLabel("Minor 1 : "));
-		PMinor1.add(tf_Minor1=new JTextField(10));
+		PMinor1.add(tf_Minor1=new JTextField(15));
+		PMinor1.setBackground(Color.WHITE);
 		
 		PMinor2.add(new JLabel("Minor 2 : "));
-		PMinor2.add(tf_Minor2=new JTextField(10));
+		PMinor2.add(tf_Minor2=new JTextField(15));
+		PMinor2.setBackground(Color.WHITE);
 		
-		PReferalProf.add(new JLabel("Refferal Prof : "));
-		PReferalProf.add(tf_ReferalProf=new JTextField(10));
+		PReferalProf.add(new JLabel("Refferal Prof :  "));
+		PReferalProf.add(tf_ReferalProf=new JTextField(12));
+		PReferalProf.setBackground(Color.WHITE);
 		
-		PavgGrade.add(new JLabel("Average Grade"));
-		PavgGrade.add(tf_AvgGrade=new JTextField(10));
+		PavgGrade.add(new JLabel("Average Grade :  "));
+		PavgGrade.add(tf_AvgGrade=new JTextField(11));
+		PavgGrade.setBackground(Color.WHITE);
 		
 		bn_addSubmit = new JButton("Submit");
+		bn_addSubmit.setForeground(Color.WHITE);
+		bn_addSubmit.setBackground(new Color(66,133,244));
+		bn_addSubmit.setPreferredSize(new Dimension(224,20));
+		PButtonSubmit.setBackground(Color.WHITE);
 		PButtonSubmit.add(bn_addSubmit);
 		
 		
-		PanelPartTimeStudent.add(PNumberOfHours);
-		PanelPartTimeStudent.add(PLevelOfStudie);
-		PanelPartTimeStudent.add(PMajor);
-		PanelPartTimeStudent.add(PMinor1);
-		PanelPartTimeStudent.add(PMinor2);
-		PanelPartTimeStudent.add(PReferalProf);
-		PanelPartTimeStudent.add(PavgGrade);
-		PanelPartTimeStudent.add(PButtonSubmit);
+		framePartTimeTStd.add(PTitlePartTimeStd);
+		framePartTimeTStd.add(PLevelOfStudie);
+		framePartTimeTStd.add(PNumberOfHours);
+		framePartTimeTStd.add(PMajor);
+		framePartTimeTStd.add(PMinor1);
+		framePartTimeTStd.add(PMinor2);
+		framePartTimeTStd.add(PReferalProf);
+		framePartTimeTStd.add(PavgGrade);
+		framePartTimeTStd.add(PButtonSubmit);
 		
 		
 	}
-	public void windowInputPartTimeStd(){
+	
+	public void windowInputPartTimeStd(Student[] students,int i){
 		
 		
 		
-		remove(Student.PanelStudent);
+		//frameStd.remove(Student.PanelStudent);
 		
 		windowBUilder();
-		
-		add(PanelPartTimeStudent);
-		setVisible(true);
+		framePartTimeTStd.setResizable(false); // prevent this from being resize
+		framePartTimeTStd.getContentPane().setBackground(new Color(255,255,255)); //change the color of the background
+		framePartTimeTStd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		framePartTimeTStd.setVisible(true);
 		
 		bn_addSubmit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -244,14 +324,51 @@ public class PartTimeStd extends Student{
 				String ReferalProfGiven;
 				Float avgGradeGiven;
 				
-				numberOfHoursGiven=Integer.parseInt(tf_number_of_Hours.getText());
-				levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
-				MajorGiven=tf_Major.getText();
-				Minor1Given = tf_Minor1.getText();
-				Minor2Given= tf_Minor2.getText();
-				ReferalProfGiven= tf_ReferalProf.getText();
-				avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				try{
+					levelOfStudieGiven = Integer.parseInt((String)cb_level.getSelectedItem());
+				}
+				catch(Exception exeption){
+					levelOfStudieGiven= 0;
+				}
+				try {
+					MajorGiven=tf_Major.getText();
+				}
+				catch(Exception exeption) {
+					MajorGiven="Error";
+				}
+				try {
+					Minor1Given = tf_Minor1.getText();
+				}
+				catch(Exception exeption) {
+					Minor1Given="Error";
+				}
+				try {
+					Minor2Given= tf_Minor2.getText();
+				}
+				catch(Exception exeption) {
+					Minor2Given="Error";
+				}
+				try {
+					ReferalProfGiven= tf_ReferalProf.getText();
+				}
+				catch(Exception exeption) {
+					ReferalProfGiven="Error";
+				}
+				try {
+					avgGradeGiven=Float.valueOf(tf_AvgGrade.getText());
+				}
+				catch(Exception exeption) {
+					avgGradeGiven = (float) 0.0;
+				}
 				
+				try {
+					numberOfHoursGiven=Integer.parseInt(tf_number_of_Hours.getText());
+				}
+				catch(Exception exeption) {
+					numberOfHoursGiven = 0;
+				}
+				
+			
 				NumberOfHours=numberOfHoursGiven;
 				levelOfStudie=levelOfStudieGiven; // betwen 1 and 5
 				Major=MajorGiven;
@@ -259,16 +376,26 @@ public class PartTimeStd extends Student{
 				Minor2=Minor2Given;
 				ReferalProf=ReferalProfGiven;
 				avgGrade=avgGradeGiven;
-				System.out.println(toString());
 				
-				submitPart=true;
+				
+
+				
+				if (!name.equals("")) {
+					students[i]= new PartTimeStd(  name,  Surname,  Field_Of_Studie,typeOfStudie,Adresse,
+							 id_Student,  levelOfStudie,  Major,  Minor1,  Minor2,  ReferalProf,  avgGrade);
+					mainWindowBuilder(students,i+1);
+					framePartTimeTStd.dispose();
+					
+				}
+				else {
+					mainWindowBuilder(students,i);
+					framePartTimeTStd.dispose();
+				
+				}
+				
 			}
 		});	
 		
-		while (submitPart==false) {
-			System.out.print("");
-		}
-	
 		
 		
 	}
